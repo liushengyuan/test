@@ -37,47 +37,7 @@
 </head>
 <body>
 <!--header-->
-<header>
- <h1><img src="images/admin_logo.png"/></h1>
- <ul class="rt_nav">
-  <li><a  class="admin_icon">${adminUser.username}</a></li>
-  <li><a href="logout" class="quit_icon">安全退出</a></li>
- </ul>
-</header>
-
-<!--aside nav-->
-<aside class="lt_aside_nav content mCustomScrollbar">
- <ul>
-  <li>
-   <dl>
-    <dt>商品管理</dt>
-    <!--当前链接则添加class:active-->
-    <dd><a href="#">商品列表</a></dd>
-    <dd><a href="../goods/addGoods">添加商品</a></dd>
-   </dl>
-  </li>
-  <li>
-   <dl>
-    <dt>活动管理</dt>
-    <dd><a href="#">查看活动列表</a></dd>
-    <dd><a href="#">添加活动</a></dd>
-   </dl>
-  </li>
-  <li>
-   <dl>
-    <dt>会员管理</dt>
-    <dd><a href="#">会员列表</a></dd>
-    <dd><a href="#">添加会员</a></dd>
-   </dl>
-  </li>
-  <li>
-   <dl>
-    <dt>消息管理</dt>
-    <dd><a href="#">消息列表</a></dd>
-   </dl>
-  </li>
- </ul>
-</aside>
+<%@ include  file="head.jsp"%>
 <section class="rt_wrap content mCustomScrollbar">
 	<div class="rt_content">
 	<!-- 商品列表 -->
@@ -86,7 +46,7 @@
 	<%-- <c:if test="${addr!=null}"> --%>
 	<%-- <%@ include  file=${addr} %>  --%>
 	<%-- </c:if> --%>
-	 <jsp:include page="admin/goods/goods_list.jsp"/>
+	<%--  <jsp:include page="admin/goods/goods_list.jsp"/> --%>
 	</div>
 </section>
 
