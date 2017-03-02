@@ -14,6 +14,13 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
        
+	<!-- spring注解模式配置 -->
+	<context:annotation-config/>
+    <context:component-scan base-package="com.*"/>
+     <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->  
+    <bean  
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />  
+        
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		lazy-init="false">
@@ -46,6 +53,10 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
+	<bean id="simpleJdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+  		<constructor-arg><ref bean="dataSource"/></constructor-arg>
+	</bean> 
+	
     <!-- 配置JDBC数据源的局部事务管理器，使用DataSourceTransactionManager 类 
                   该类实现PlatformTransactionManager接口，是针对采用数据源连接的特定实现-->
 	<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -64,9 +75,5 @@
 	    </property>
 	</bean>
 	
-	<!-- spring注解模式配置 -->
-	<context:annotation-config/>
-    <context:component-scan base-package="com.*"/>
-    
   	 
 </beans>

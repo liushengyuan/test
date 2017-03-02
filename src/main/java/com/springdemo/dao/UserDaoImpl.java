@@ -13,7 +13,7 @@ import com.springdemo.po.User;
 @Repository  
 public class UserDaoImpl implements UserDao {  
       
-    @Autowired  
+    //@Autowired  
     private JdbcTemplate jdbcTemplate;  
   
     @Override  

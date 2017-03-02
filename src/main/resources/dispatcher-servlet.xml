@@ -39,6 +39,8 @@
     </mvc:interceptor>
 	</mvc:interceptors>
 	
+	
+	
     <bean id="websocket" class="com.springdemo.websocket.WebsocketEndPoint"/>  
   
 	<websocket:handlers>  

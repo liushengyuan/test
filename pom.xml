@@ -21,6 +21,11 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency> 
+	<groupId>com.thoughtworks.xstream</groupId> 
+	<artifactId>xstream</artifactId> 
+	<version>1.4.3</version> 
+	</dependency>
     <!-- spring mvc 框架 -->
     <dependency>
     	<groupId>org.springframework</groupId>
@@ -32,7 +37,7 @@
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-jdbc</artifactId>
-   		 <version>${spring.version}</version>
+   		 <version>4.1.5.RELEASE</version>
 	</dependency>
     
     <dependency>
@@ -141,7 +146,8 @@
 	   <artifactId>spring-messaging</artifactId>
 	   <version>${spring.version}</version>
 	</dependency>
-
+	
+	
   </dependencies>
   
   

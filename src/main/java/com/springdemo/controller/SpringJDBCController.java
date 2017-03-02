@@ -1,6 +1,8 @@
 package com.springdemo.controller;
 
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -12,8 +14,9 @@ import com.springdemo.service.IUserService;
 
 @Controller  
 public class SpringJDBCController {  
-	@Autowired  
+	//@Autowired 
     public JdbcTemplate jdbcTemplate;
+
 	@Autowired  
     private IUserService userService; 
   

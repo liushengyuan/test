@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>  
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>首页</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<title>注册</title>
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,43 +15,32 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- start menu -->
-<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/memenu.js"></script>
+<link href="../css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
-<script src="js/simpleCart.min.js"> </script>
+<script src="../js/simpleCart.min.js"> </script>
 <!-- slide -->
-<script src="js/responsiveslides.min.js"></script>
-   <script>
-    $(function () {
-      $("#slider").responsiveSlides({
-      	auto: true,
-      	speed: 500,
-        namespace: "callbacks",
-        pager: true,
-      });
-    });
-  </script>
 </head>
 <body>
 <!--header-->
 <div class="header">
 	<div class="header-top">
 		<div class="container">
-		<div class="col-sm-4 world">
-					<p class="log"><a href="shop/account.jsp"  >Login</a>
-						<span>or</span><a  href="shop/account.jsp"  >Signup</a></p>
+		<div class="col-md-4 world">
+					<p class="log"><a href="account.html"  >Login</a>
+						<span>or</span><a  href="account.html"  >Signup</a></p>
 				</div>
-				<div class="col-sm-4 logo">
-					<a href="index.jsp"><img src="images/logo.png" alt=""></a>	
+				<div class="col-md-4 logo">
+					<a href="../index.jsp"><img src="../images/logo.png" alt=""></a>	
 				</div>
 		
-			<div class="col-sm-4 header-left">		
+			<div class="col-md-4 header-left">		
 					
 					<div class="cart box_1">
 						<a href="checkout.html">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span></div>
-							<img src="images/cart.png" alt=""/></h3>
+							<img src="../images/cart.png" alt=""/></h3>
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
@@ -65,13 +52,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="container">
 			<div class="head-top">
-				<div class="col-sm-2 number">
+				<div class="col-md-2 number">
 					<span><i class="glyphicon glyphicon-phone"></i>085 596 234</span>
 				</div>
-		 <div class="col-sm-8 h_menu4">
+		  <div class="col-md-8 h_menu4">
 				<ul class="memenu skyblue">
-					  <li class=" grid"><a  href="index.jsp">主页</a></li>	
-				      <li><a  href="#">男装</a>
+					  <li class=" grid"><a  href="index.html"></a></li>	
+				      <li><a  href="#"></a>
 				      	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -129,7 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 					</li>
-				    <li class="grid"><a  href="#">	女装</a>
+				    <li class="grid"><a  href="#"></a>
 					  	<div class="mepanel">
 						<div class="row">
 							<div class="col1">
@@ -187,24 +174,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						  </div>
 						</div>
 			    </li>
-				<li><a  href="typo.html">博客</a></li>				
-				<li><a class="color6" href="contact.html">联系我们</a></li>
+				<li><a  href="typo.html"></a></li>				
+				<li><a class="color6" href="contact.html"></a></li>
 			  </ul> 
 			</div>
-				<div class="col-sm-2 search">		
+				<div class="col-md-2 search">		
 			<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a>
 		</div>
 		<div class="clearfix"> </div>
 			<!---pop-up-box---->
 					  <script type="text/javascript" src="js/modernizr.custom.min.js"></script>    
-					<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+					<link href="../css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+					<script src="../js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!---//pop-up-box---->
 				<div id="small-dialog" class="mfp-hide">
 				<div class="search-top">
 						<div class="login">
 							<input type="submit" value="">
-							<input type="text" value="Type something..." onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '';}">		
+							<input type="text" value="Type something..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">		
 						</div>
 						<p>	Shopping</p>
 					</div>				
@@ -229,161 +216,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 </div>
-<!--banner-->
-<div class="banner">
-	<div class="col-sm-3 banner-mat">
-		<img class="img-responsive"	src="images/ba1.jpg" alt="">
-	</div>
-	<div class="col-sm-6 matter-banner">
-	 	<div class="slider">
-	    	<div class="callbacks_container">
-	      		<ul class="rslides" id="slider">
-	        		<li>
-	          			<img src="images/1.jpg" alt="">
-	       			 </li>
-			 		 <li>
-	          			<img src="images/2.jpg" alt="">   
-	       			 </li>
-					 <li>
-	          			<img src="images/1.jpg" alt="">
-	        		</li>	
-	      		</ul>
-	 	 	</div>
-		</div>
-	</div>
-	<div class="col-sm-3 banner-mat">
-		<img class="img-responsive" src="images/ba.jpg" alt="">
-	</div>
-	<div class="clearfix"> </div>
+<!--//header-->
+<div class="container">
+	<div class="register">
+		<h1>Register</h1>
+		  	  <form> 
+				 <div class="col-md-6  register-top-grid">
+					
+					<div class="mation">
+						<span>用户名</span>
+						<input type="text"> 
+					
+						
+					</div>
+					 <div class="clearfix"> </div>
+					   <a class="news-letter" href="#">
+						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>自动登陆</label>
+					   </a>
+					 </div>
+				     <div class=" col-md-6 register-bottom-grid">
+						   
+							<div class="mation">
+								<span>密码</span>
+								<input type="text">
+								<span>确认密码</span>
+								<input type="text">
+							</div>
+					 </div>
+					 <div class="clearfix"> </div>
+				</form>
+				
+				<div class="register-but">
+				   <form>
+					   <input type="submit" value="提交">
+					   <div class="clearfix"> </div>
+				   </form>
+				</div>
+		   </div>
 </div>
-<!--//banner-->
-<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >ææºç½ç«æ¨¡æ¿</a></div>
-<!--content-->
-<div class="content">
-	<div class="container">
-		<div class="content-top">
-			<h1>Recent Products</h1>
-			<div class="content-top1">
-				<div class="col-md-3 col-md2">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi.png" alt="" />
-						</a>
-						<h3><a href="single.html">Tops</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi2.png" alt="" />
-						</a>
-						<h3><a href="single.html">T-Shirt</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi4.png" alt="" />
-						</a>
-						<h3><a href="single.html">Shirt</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi1.png" alt="" />
-						</a>
-						<h3><a href="single.html">Tops</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="clearfix"> </div>
-			</div>	
-			<div class="content-top1">
-				<div class="col-md-3 col-md2">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi3.png" alt="" />
-						</a>
-						<h3><a href="single.html">Shirt</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi5.png" alt="" />
-						</a>
-						<h3><a href="single.html">T-Shirt</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi6.png" alt="" />
-						</a>
-						<h3><a href="single.html">Jeans</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-3 col-md2">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
-							<img class="img-responsive" src="images/pi7.png" alt="" />
-						</a>
-						<h3><a href="single.html">Tops</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="clearfix"> </div>
-			</div>	
-		</div>
-	</div>
-</div>
-<!--//content-->
+
 <!--footer-->
 <div class="footer">
 	<div class="container">
@@ -391,7 +262,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 top-footer1">
 				<h2>Newsletter</h2>
 					<form>
-						<input type="text" value="" onFocus="this.value='';" onBlur="if (this.value == '') {this.value ='';}">
+						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
 						<input type="submit" value="SUBSCRIBE">
 					</form>
 			</div>
@@ -400,7 +271,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<div class="footer-bottom">
 		<div class="container">
-				<div class="col-sm-3 footer-bottom-cate">
+				<div class="col-md-3 footer-bottom-cate">
 					<h6>Categories</h6>
 					<ul>
 						<li><a href="#">Curabitur sapien</a></li>
@@ -411,7 +282,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					</ul>
 				</div>
-				<div class="col-sm-3 footer-bottom-cate">
+				<div class="col-md-3 footer-bottom-cate">
 					<h6>Feature Projects</h6>
 					<ul>
 						<li><a href="#">Curabitur sapien</a></li>
@@ -422,7 +293,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					</ul>
 				</div>
-				<div class="col-sm-3 footer-bottom-cate">
+				<div class="col-md-3 footer-bottom-cate">
 					<h6>Top Brands</h6>
 					<ul>
 						<li><a href="#">Curabitur sapien</a></li>
@@ -435,7 +306,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 					</ul>
 				</div>
-				<div class="col-sm-3 footer-bottom-cate cate-bottom">
+				<div class="col-md-3 footer-bottom-cate cate-bottom">
 					<h6>Our Address</h6>
 					<ul>
 						<li>Aliquam metus  dui. </li>
