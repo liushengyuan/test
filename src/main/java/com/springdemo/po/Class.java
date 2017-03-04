@@ -5,7 +5,7 @@ public class Class {
 	private int goods_id;//商品id
 	private int cla;//分类  0男装  1女装 2 儿童
 	private int child_cla;//子分类  0上衣  1 裤子  2 鞋子
-	private int three_cla;//0棉衣  1 针织/毛衣   2 风衣   3 大衣    4   衬衫   5 卫衣 6小西装  7  运动衫   8 小背心/吊带   9 T恤
+	private int three_cla;//0棉衣  1 毛衣   2 风衣   3 大衣    4   衬衫   5 卫衣 6小西装  7  运动衫   8 小背心   9 T恤
 	//10牛仔裤   11 休闲裤   12 运动裤      13打底裤  14 背带裤  15  靴裤
 	//16皮鞋，17凉鞋，18布鞋，19人造革鞋，20饰品鞋
 	public int getId() {
