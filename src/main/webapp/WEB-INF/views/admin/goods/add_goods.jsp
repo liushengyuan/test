@@ -75,30 +75,29 @@ function submit(){
 	var name =$("#name").value;
 	var price =$("#is_check").value;
 	var info =$("#info").value;
-	var class2 =$("#class2").value;
-	var childClass =$("#childClass").value;
-	var threeClass =$("#threeClass").value;
+	var class2 =$("#class2").find("option:checked").attr("value");
+	var childClass =$("#childClass").find("option:checked").attr("value");
+	var threeClass =$("#threeClass").find("option:checked").attr("value");
 	test();
 	if(name==""||price==""||info==""||is_check==""||image1==""||image2==""||image3==""||class2==""||childClass==""||threeClass==""){
 		alert("请检查数据！");
 		return;
 	}
-	var goods = {goods_name:name,price:price,info:info,is_check:is_check,image1:image1,image2:image1,image3:image3};
-	$.ajax({  
-	    url: 'login?username='+username+'&password='+password,  
-	    data: goods,  
-	    type: "POST",  
-	    //traditional: true,  
-	    success: function (responseJSON) {  
-	        // your logic
-	        /* location.href="isLogin"; */
-	    },
-	    error: function (rs){
-	    	alert(rs.responseText);
+	$.ajax({
+		cache: true,
+		type: "POST",
+		url:'addGoodsControll?image1='+image1+"&image2="+image2+"&image3="+image3,
+		data:$('#goodsfrom').serialize(),// 你的formid
+		async: false,
+		error: function(rs) {
+			alert(rs.responseText);
 	    	return;
-	    }
-	    
-  }); 
+		},
+		success: function(responseJSON) {
+			alert(responseJSON);
+		}
+	});
+	
 }
 /* 上传图片 */
 function uploadfile(e,f,g){
@@ -153,46 +152,48 @@ function test(){
 		<section>
 	      <h2><strong style="color:grey;">添加商品</strong></h2>
 	      <ul class="ulColumn2">
-	       <li>
-	        <span class="item_name" style="width:120px;" id="name">商品名称：</span>
-	        <input type="text" class="textbox textbox_295" placeholder="输入你的商品名称..."/>
-	       </li>
-	       <li>
-	        <span class="item_name" style="width:120px;">商品价格：</span>
-	        <input type="number" class="textbox textbox_295" placeholder="输入你的商品价格..." id="price"/>
-	       </li>
-	       <li>
-	        <span class="item_name" style="width:120px;">分类：</span>
-	        <select class="select" id="class2">
-	         <option value="0">男装</option>
-	         <option value="1">女装</option>
-	         <option value="2">童装</option>
-	        </select>
-	       </li>
-	       <li>
-	        <span class="item_name" style="width:120px;">二级分类：</span>
-	        <select class="select" onchange="selectOnchang(this)" id="childClass">
-	        <option value="3">选择分类</option>
-	         <option value="0">上衣</option>
-	         <option value="1">裤子</option>
-	         <option value="2">鞋子</option>
-	        </select>
-	       </li>
-	        <li>
-	        <span class="item_name" style="width:120px;">三级分类：</span>
-	        <select class="select" id="threeClass">
-	         <option>选择三级分类</option>
-	        </select>
-	       </li>
-	       <li>
-	        <span class="item_name" style="width:120px;">是否上架：</span>
-	        <label class="single_selection"><input type="radio" name="radio" value="1"/>是</label>
-	        <label class="single_selection"><input type="radio" name="radio" value="0"/>否</label>
-	       </li>
-	       <li>
-	        <span class="item_name" style="width:120px;">详细信息：</span>
-	        <textarea placeholder="详细信息" class="textarea" style="width:500px;height:100px;" id="info"></textarea>
-	       </li>
+	       <form  method="post" enctype="multipart/form-data" id="goodsfrom" onsubmit="return false;">
+		       <li>
+		        <span class="item_name" style="width:120px;">商品名称：</span>
+		        <input type="text" class="textbox textbox_295" id="name" name="goodsname" placeholder="输入你的商品名称..."/>
+		       </li>
+		       <li>
+		        <span class="item_name" style="width:120px;">商品价格：</span>
+		        <input type="number" class="textbox textbox_295" placeholder="输入你的商品价格..." id="price" name="price"/>
+		       </li>
+		       <li>
+		        <span class="item_name" style="width:120px;">分类：</span>
+		        <select class="select" id="class2" name="class2">
+		         <option value="0">男装</option>
+		         <option value="1">女装</option>
+		         <option value="2">童装</option>
+		        </select>
+		       </li>
+		       <li>
+		        <span class="item_name" style="width:120px;">二级分类：</span>
+		        <select class="select" onchange="selectOnchang(this)" id="childClass" name="childClass">
+		        <option value="3">选择分类</option>
+		         <option value="0">上衣</option>
+		         <option value="1">裤子</option>
+		         <option value="2">鞋子</option>
+		        </select>
+		       </li>
+		        <li>
+		        <span class="item_name" style="width:120px;">三级分类：</span>
+		        <select class="select" id="threeClass" name="threeClass">
+		         <option>选择三级分类</option>
+		        </select>
+		       </li>
+		       <li>
+		        <span class="item_name" style="width:120px;">是否上架：</span>
+		        <label class="single_selection"><input type="radio" name="radio" value="1"/>是</label>
+		        <label class="single_selection"><input type="radio" name="radio" value="0"/>否</label>
+		       </li>
+		       <li>
+		        <span class="item_name" style="width:120px;">详细信息：</span>
+		        <textarea placeholder="详细信息" class="textarea" style="width:500px;height:100px;" id="info"  name="info"></textarea>
+		       </li>
+	       </form> 
 	       <li>
 	        
 	        <!-- 第一张图片 -->

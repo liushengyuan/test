@@ -4,6 +4,11 @@ package com.springdemo.controller.admin;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
@@ -13,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.google.gson.Gson;
 import com.springdemo.po.Admin;
+import com.springdemo.po.Goods;
 
 
 @Controller
@@ -38,7 +46,6 @@ public class GoodsManagerController {
 	@ResponseBody
 	public String getClass(@RequestParam("child") int child){
 		String childs="";
-		System.out.println(child);
 		if(child==0){
 			childs="上衣";
 		}else if(child==1){
@@ -54,5 +61,32 @@ public class GoodsManagerController {
 		 String json = gson.toJson(list);
 		 return json; 
 	}
-
+	//添加商品
+	@RequestMapping(value = "/addGoodsControll",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String addGoods(@RequestParam("image1") String image1,@RequestParam("image3") String image3,@RequestParam("image2") String image2){
+		Goods goods= new Goods();
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		//获取参数
+		String goodsname =request.getParameter("goodsname");
+		String price = request.getParameter("price");
+		String childClass =request.getParameter("childClass");
+		String class2 = request.getParameter("class2");
+		String threeClass =request.getParameter("threeClass");
+		String info = request.getParameter("info");
+		String radio = request.getParameter("radio");
+		goods.setGoods_name(goodsname);
+		goods.setImage1(image1);
+		goods.setImage1(image2);
+		goods.setImage1(image3);
+		goods.setInfo(info);
+		goods.setIs_check(Integer.valueOf(radio));
+		goods.setPrice(Double.valueOf(price));
+		//添加商品
+		
+		//添加分类
+		
+		/*System.out.println(goodsJson);*/
+		return "hh";
+	}
 }

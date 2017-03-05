@@ -1,6 +1,8 @@
 package com.springdemo.po;
 
-public class Goods {
+import java.io.Serializable;
+
+public class Goods  implements Serializable{
 	private int id;
 	private String goods_name;
 	private double price;

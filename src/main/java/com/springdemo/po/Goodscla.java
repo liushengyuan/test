@@ -1,6 +1,6 @@
 package com.springdemo.po;
 
-public class Class {
+public class Goodscla {
 	private int id;
 	private int goods_id;//商品id
 	private int cla;//分类  0男装  1女装 2 儿童
