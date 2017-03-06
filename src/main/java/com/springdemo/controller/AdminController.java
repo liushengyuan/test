@@ -30,9 +30,15 @@ public class AdminController {
 			HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
 			Admin admin =(Admin) request.getSession().getAttribute("adminUser");
 	    	ModelAndView mv = new ModelAndView();
-    	 	//视图名
-    		mv.setViewName("login");
 	    	
+	    	//判断后台管理员是否登陆
+	    	if(admin==null){
+	    	 	//视图名
+	    		mv.setViewName("login");
+	    	}else{
+	    		mv.addObject("adminUser",admin);
+	    		mv.setViewName("index");
+	    	}
 	    	return mv;
 		
 		}

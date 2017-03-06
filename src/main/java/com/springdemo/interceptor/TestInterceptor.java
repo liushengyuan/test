@@ -29,6 +29,12 @@ public class TestInterceptor extends HandlerInterceptorAdapter {
 	    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 	            // 处理器实际执行之前
 	            System.out.println("处理器执行之前！");
+	            Object user = request.getSession().getAttribute("adminUser");
+                if (user == null) {
+	                 System.out.println("尚未登录，调到登录页面");
+	                 response.sendRedirect("../user/isLogin");
+	                 return false;
+                }
 	            return super.preHandle(request, response, handler);
 	    }
 }
