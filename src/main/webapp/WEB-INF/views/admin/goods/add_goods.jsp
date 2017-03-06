@@ -91,10 +91,11 @@ function submit(){
 		async: false,
 		error: function(rs) {
 			alert(rs.responseText);
-	    	return;
+			location.href="addGoods";
 		},
 		success: function(responseJSON) {
 			alert(responseJSON);
+			location.href="addGoods";
 		}
 	});
 	
