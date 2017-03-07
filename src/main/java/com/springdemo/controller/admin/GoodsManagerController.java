@@ -24,14 +24,20 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.google.gson.Gson;
 import com.springdemo.po.Admin;
 import com.springdemo.po.Goods;
+import com.springdemo.po.Goodscla;
+import com.springdemo.service.GoodsService;
 
 
 @Controller
 @RequestMapping("/admin")
 public class GoodsManagerController {
+	
 	@Autowired 
 	private JdbcTemplate jdbcTemplate;
-	//添加商品
+	@Autowired
+	private GoodsService goodsService;
+	
+	//添加商品跳转
 	@RequestMapping("/addGoods")
 	public String addGoods(Model model){
 		return "admin/goods/add_goods";
@@ -66,27 +72,38 @@ public class GoodsManagerController {
 	@ResponseBody
 	public String addGoods(@RequestParam("image1") String image1,@RequestParam("image3") String image3,@RequestParam("image2") String image2){
 		Goods goods= new Goods();
+		Goodscla goodsCla = new Goodscla();
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 		//获取参数
-		String goodsname =request.getParameter("goodsname");
-		String price = request.getParameter("price");
-		String childClass =request.getParameter("childClass");
-		String class2 = request.getParameter("class2");
-		String threeClass =request.getParameter("threeClass");
-		String info = request.getParameter("info");
-		String radio = request.getParameter("radio");
-		goods.setGoods_name(goodsname);
-		goods.setImage1(image1);
-		goods.setImage1(image2);
-		goods.setImage1(image3);
-		goods.setInfo(info);
-		goods.setIs_check(Integer.valueOf(radio));
-		goods.setPrice(Double.valueOf(price));
-		//添加商品
+		try {
+			String goodsname =request.getParameter("goodsname");
+			String price = request.getParameter("price");
+			String childClass =request.getParameter("childClass");
+			String class2 = request.getParameter("class2");
+			String threeClass =request.getParameter("threeClass");
+			String info = request.getParameter("info");
+			String radio = request.getParameter("radio");
+			goods.setGoods_name(goodsname);
+			goods.setImage1(image1);
+			goods.setImage2(image2);
+			goods.setImage3(image3);
+			goods.setInfo(info);
+			goods.setIs_check(Integer.valueOf(radio));
+			goods.setPrice(Double.valueOf(price));
+			//添加商品
+			this.goodsService.addGoods(goods);
+			//查询刚添加商品的id
+			int goods_id =this.goodsService.lastGoodsid();
+			//添加分类
+			goodsCla.setCla(Integer.valueOf(class2));
+			goodsCla.setChild_cla(Integer.valueOf(childClass));
+			goodsCla.setThree_cla(Integer.valueOf(threeClass));
+			goodsCla.setGoods_id(Integer.valueOf(goods_id));
+			this.goodsService.addGoodscla(goodsCla);
+			return "上传成功";
+		} catch (Exception e) {
+			return "网络出现问题！";
+		}
 		
-		//添加分类
-		
-		/*System.out.println(goodsJson);*/
-		return "hh";
 	}
 }
