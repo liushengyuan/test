@@ -110,7 +110,7 @@ public class GoodsManagerController {
 	}
 	//后台查询商品列表
 	@RequestMapping(value = "/getGoodsControll",produces = "application/json; charset=utf-8")
-	public ModelAndView getGoodsPage(@RequestParam("page") String page,@RequestParam("pageSize") String pageSize,Model model){
+	public ModelAndView getGoodsPage(@RequestParam("page") String page,@RequestParam("pageSize") String pageSize){
 		if(page==""||page==null){
 			page="1";
 			pageSize="15";
@@ -123,5 +123,20 @@ public class GoodsManagerController {
 		mv.setViewName("admin/goods/goods_list");
 		
 		return mv;
+	}
+	//下架商品
+	@RequestMapping("/delGoods")
+	public ModelAndView delGoods(@RequestParam("goods_id") int goods_id){
+		this.goodsService.changeGoods(goods_id, 0);
+		
+		this.getGoodsPage("1", "3");
+		return this.getGoodsPage("1", "3");
+	}
+	//上架商品
+	@RequestMapping("/addGoodsChange")
+	public ModelAndView addGoods(@RequestParam("goods_id") int goods_id){
+		this.goodsService.changeGoods(goods_id, 1);
+		this.getGoodsPage("1", "3");
+		return this.getGoodsPage("1", "3");
 	}
 }

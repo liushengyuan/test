@@ -41,5 +41,11 @@ public class GoodsServiceImpl implements GoodsService{
 		// TODO Auto-generated method stub
 		return this.pagedaoimpl.showAlbum(page, pageSize);
 	}
+
+	@Override
+	public void changeGoods(int goods_id, int style) {
+		// TODO Auto-generated method stub
+		this.goodsdaoimpl.changeGoods(goods_id, style);
+	}
 	
 }

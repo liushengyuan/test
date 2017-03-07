@@ -39,5 +39,14 @@ public class GoodsDaoImpl implements GoodsDao{
 		String sql="insert into goodscla (goods_id,cla,child_cla,three_cla) values (?,?,?,?);";
 		this.simpleJdbcTemplate.update(sql,goodscla.getGoods_id(),goodscla.getCla(),goodscla.getChild_cla(),goodscla.getThree_cla());
 	}
+	@Override
+	public void changeGoods(int goods_id, int style) {
+		// TODO Auto-generated method stub
+		String sql="update goods set is_check=0 where id = ?";
+		if(style==1){
+			 sql="update goods set is_check=1 where id = ?";
+		}
+		this.simpleJdbcTemplate.update(sql,goods_id);
+	}
 
 }

@@ -20,4 +20,10 @@ public interface GoodsDao {
 	 * @param goodscla
 	 */
 	public void addGoodscla(Goodscla goodscla);
+	/**
+	 * 修改商品状态
+	 * @param goods_id
+	 * @param style
+	 */
+	public void changeGoods(int goods_id,int style);
 }

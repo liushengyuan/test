@@ -25,4 +25,10 @@ public interface GoodsService {
 	 * @return
 	 */
 	public Page getGoodsPage(int page,int pageSize);
+	/**
+	 * 修改商品状态
+	 * @param goods_id
+	 * @param style
+	 */
+	public void changeGoods(int goods_id,int style);
 }

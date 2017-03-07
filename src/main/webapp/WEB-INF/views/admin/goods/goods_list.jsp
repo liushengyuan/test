@@ -55,6 +55,18 @@
 			location.href="getGoodsControll?page="+page+"&pageSize=3";
 		}
 	}
+	//改变图片大消
+	function changImg(e){
+		var url =e.name;
+		var url2 =url.split("springmvc");
+		e.src = "/springmvc"+url2[1];
+	}
+	function delGoods(e){
+		location.href="delGoods?goods_id="+e.name;
+	}
+	function addGoods(e){
+		location.href="addGoodsChange?goods_id="+e.name;
+	}
 </script>
 </head>
 <body>
@@ -89,15 +101,15 @@
 		       <td>否</td>
 		       </c:if>
 		       <td>${item.info}</td>
-		       <td><img src='D:\stsworkplace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\springmvc\1488808685274'/></td>
-		       <td><img src=''+${item.image1}</td>
-		       <td><img src=''+${item.image1}</td>
+		       <td><img src='/springmvc/1488808685274'  style="width:100px;height:100px;" name="${item.image1}" onload='changImg(this)'/></td>
+		       <td><img src='/springmvc/1488808685274'  style="width:100px;height:100px;" name="${item.image2}" onload='changImg(this)'/> </td>
+		       <td><img src='/springmvc/1488808685274'  style="width:100px;height:100px;" name="${item.image3}" onload='changImg(this)'/></td>
 		       <td>
 		       	<c:if test="${item.is_check==1}">
-		        <a href="#" class="inner_btn">下架</a>
+		        <a href="javascript:void(0)" class="inner_btn" name="${item.id}" onClick="delGoods(this)">下架</a>
 		        </c:if>
 		        <c:if test="${item.is_check==0}">
-		        <a href="#" class="inner_btn">上架</a>
+		        <a href="javascript:void(0)" class="inner_btn" name="${item.id}" onClick="addGoods(this)">上架</a>
 		        </c:if>
 		       </td>
 		      </tr>
@@ -106,7 +118,7 @@
 		     
 		     <aside class="paging">
 		      <a onClick="goUP(${goodsPage.currentPage})">上一页</a>
-		      <a href="getGoodsControll?page=1&pageSize=10">${goodsPage.currentPage}</a>
+		      <a href="#">${goodsPage.currentPage}</a>
 		      <a onClick="goDown(${goodsPage.totalPage},${goodsPage.currentPage})">下一页</a>
 		     </aside>
 		     
