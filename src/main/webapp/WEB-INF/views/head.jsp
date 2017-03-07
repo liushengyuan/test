@@ -15,7 +15,7 @@
    <dl>
     <dt>商品管理</dt>
     <!--当前链接则添加class:active-->
-    <dd><a href="../admin/goodsList">商品列表</a></dd>
+    <dd><a href="../admin/getGoodsControll?page=1&pageSize=3">商品列表</a></dd>
     <dd><a href="../admin/addGoods">添加商品</a></dd>
    </dl>
   </li>

@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.springdemo.po.Admin;
 import com.springdemo.po.Goods;
 import com.springdemo.po.Goodscla;
+import com.springdemo.po.Page;
 import com.springdemo.service.GoodsService;
 
 
@@ -105,5 +107,21 @@ public class GoodsManagerController {
 			return "网络出现问题！";
 		}
 		
+	}
+	//后台查询商品列表
+	@RequestMapping(value = "/getGoodsControll",produces = "application/json; charset=utf-8")
+	public ModelAndView getGoodsPage(@RequestParam("page") String page,@RequestParam("pageSize") String pageSize,Model model){
+		if(page==""||page==null){
+			page="1";
+			pageSize="15";
+		}
+		int pageNo=Integer.valueOf(page);
+		int pageSizeNum =Integer.valueOf(pageSize);
+		Page goodsPage =this.goodsService.getGoodsPage(pageNo, pageSizeNum);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("goodsPage",goodsPage);
+		mv.setViewName("admin/goods/goods_list");
+		
+		return mv;
 	}
 }

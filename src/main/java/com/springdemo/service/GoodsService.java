@@ -2,6 +2,7 @@ package com.springdemo.service;
 
 import com.springdemo.po.Goods;
 import com.springdemo.po.Goodscla;
+import com.springdemo.po.Page;
 
 public interface GoodsService {
 	/**
@@ -19,4 +20,9 @@ public interface GoodsService {
 	 * @param Goodscla
 	 */
 	public void addGoodscla(Goodscla Goodscla);
+	/**
+	 * 获得商品列表
+	 * @return
+	 */
+	public Page getGoodsPage(int page,int pageSize);
 }

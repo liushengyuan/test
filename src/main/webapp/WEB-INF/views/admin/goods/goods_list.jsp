@@ -34,6 +34,28 @@
 		});
 	})(jQuery);
 </script>
+<script>
+	//上一页
+	function goUP(e){
+		if(e==1){
+			alert("当前是第一页")
+		}else{
+			e=e-1;
+			location.href="getGoodsControll?page="+e+"&pageSize=3";
+		}
+	}
+	//下一页
+	function goDown(e,f){
+		var pagelast = parseInt(f); 
+		var pagetotal = parseInt(e); 
+		if(pagelast>=pagetotal){
+			alert("当前是最后一页");
+		}else{
+			var page =pagelast+1;
+			location.href="getGoodsControll?page="+page+"&pageSize=3";
+		}
+	}
+</script>
 </head>
 <body>
 <!--header-->
@@ -47,60 +69,47 @@
 		     </div>
 		     <table class="table">
 		      <tr>
-		       <th>项目1</th>
-		       <th>项目2</th>
-		       <th>项目3</th>
-		       <th>项目4</th>
-		       <th>项目5</th>
-		       <th>项目6</th>
-		       <th>项目7</th>
+		       <th>商品名称</th>
+		       <th>商品价格</th>
+		       <th>是否</th>
+		       <th>详细信息</th>
+		       <th>商品图片</th>
+		       <th>商品图片</th>
+		       <th>商品图片</th>
+		       <th>操作</th>
 		      </tr>
+		      <c:forEach items="${goodsPage.data}" var="item">
 		      <tr>
-		       <td style="width:265px;"><div class="cut_title ellipsis">265px宽·长标题字符串截取，仅适合单行截取，多行截取程序定义一下。</div></td>
-		       <td>内容二</td>
-		       <td>内容三</td>
-		       <td>内容四</td>
-		       <td>内容五</td>
-		       <td>内容六</td>
+		       <td style="width:265px;"><div class="cut_title ellipsis">${item.goods_name}</div></td>
+		       <td>${item.price}</td>
+		       <c:if test="${item.is_check==1}">
+		       <td>是</td>
+		       </c:if>
+		       <c:if test="${item.is_check==0}">
+		       <td>否</td>
+		       </c:if>
+		       <td>${item.info}</td>
+		       <td><img src='D:\stsworkplace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\springmvc\1488808685274'/></td>
+		       <td><img src=''+${item.image1}</td>
+		       <td><img src=''+${item.image1}</td>
 		       <td>
-		        <a href="#">表内链接</a>
-		        <a href="#" class="inner_btn">表内按钮</a>
+		       	<c:if test="${item.is_check==1}">
+		        <a href="#" class="inner_btn">下架</a>
+		        </c:if>
+		        <c:if test="${item.is_check==0}">
+		        <a href="#" class="inner_btn">上架</a>
+		        </c:if>
 		       </td>
 		      </tr>
-		      <tr>
-		       <td style="width:265px;"><div class="cut_title ellipsis">265px宽·长标题字符串截取，仅适合单行截取，多行截取程序定义一下。</div></td>
-		       <td>内容二</td>
-		       <td>内容三</td>
-		       <td>内容四</td>
-		       <td>内容五</td>
-		       <td>内容六</td>
-		       <td>
-		        <a href="#">表内链接</a>
-		        <a href="#" class="inner_btn">表内按钮</a>
-		       </td>
-		      </tr>
-		      <tr>
-		       <td style="width:265px;"><div class="cut_title ellipsis">265px宽·长标题字符串截取，仅适合单行截取，多行截取程序定义一下。</div></td>
-		       <td>内容二</td>
-		       <td>内容三</td>
-		       <td>内容四</td>
-		       <td>内容五</td>
-		       <td>内容六</td>
-		       <td>
-		        <a href="#">表内链接</a>
-		        <a href="#" class="inner_btn">表内按钮</a>
-		       </td>
-		      </tr>
+		      </c:forEach>
 		     </table>
+		     
 		     <aside class="paging">
-		      <a>第一页</a>
-		      <a>1</a>
-		      <a>2</a>
-		      <a>3</a>
-		      <a>…</a>
-		      <a>1004</a>
-		      <a>最后一页</a>
+		      <a onClick="goUP(${goodsPage.currentPage})">上一页</a>
+		      <a href="getGoodsControll?page=1&pageSize=10">${goodsPage.currentPage}</a>
+		      <a onClick="goDown(${goodsPage.totalPage},${goodsPage.currentPage})">下一页</a>
 		     </aside>
+		     
 		    </section>
 		</div>
 	</section>
