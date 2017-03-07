@@ -16,7 +16,7 @@ import com.springdemo.po.Admin;
 import com.springdemo.service.AdminUserService;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/user")
 public class AdminController {
 	 @Autowired  
 	 private AdminUserService adminUser; 

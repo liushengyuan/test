@@ -22,8 +22,8 @@
   <li>
    <dl>
     <dt>活动管理</dt>
-    <dd><a href="#">查看活动列表</a></dd>
-    <dd><a href="#">添加活动</a></dd>
+    <dd><a href="../admin/goodsList">查看活动列表</a></dd>
+    <dd><a href="../admin/addGoods">添加活动</a></dd>
    </dl>
   </li>
   <li>
@@ -36,7 +36,7 @@
   <li>
    <dl>
     <dt>消息管理</dt>
-    <dd><a href="#">消息列表</a></dd>
+    <dd><a href="../admin/goodsList">消息列表</a></dd>
    </dl>
   </li>
  </ul>
