@@ -15,4 +15,18 @@ public interface PageDao {
 	 * @return
 	 */
 	public Page showMessage(int pageNo,int pageSize);
+	/**
+	 * 获得活动关联的商品
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public Page getActGoodsList(int pageNo,int pageSize,int act_id);
+	/**
+	 * 获得活动没有关联的商品
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public Page getNoActGoods(int pageNo,int pageSize,int act_id);
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springdemo.dao.PageDao;
+import com.springdemo.po.Page;
 import com.springdemo.service.ActService;
 
 @SuppressWarnings("deprecation")
@@ -25,6 +27,8 @@ public class ActManagerController {
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private SimpleJdbcTemplate simpleJdbcTemplate;
+	@Autowired
+	private PageDao pagedaoimpl;
 	
 	//获得活动列表
 	@RequestMapping("/getAct")
@@ -40,8 +44,9 @@ public class ActManagerController {
 	
 	//获得活动关联的商品
 	@RequestMapping("/getActGoods")
-	public ModelAndView getActGoods(@RequestParam("act_id") int act_id){
+	public ModelAndView getActGoods(@RequestParam("act_id") int act_id,@RequestParam("page")int page,@RequestParam("pageSize")int pageSize){
 		ModelAndView mv = new ModelAndView();
+		Page ActGoods = this.pagedaoimpl.getActGoodsList(page, pageSize, act_id);
 		return mv;
 	}
 	
@@ -59,8 +64,10 @@ public class ActManagerController {
 	}
 	//获取活动没有关联的商品
 	@RequestMapping("/getNoActGoods")
-	public ModelAndView getNoActGoods(@RequestParam("act_id") int act_id){
+	public ModelAndView getNoActGoods(@RequestParam("act_id") int act_id,@RequestParam("page")int page,@RequestParam("pageSize")int pageSize)
+	{
 		ModelAndView mv = new ModelAndView();
+		Page ActNoGoods =this.pagedaoimpl.getNoActGoods(page, pageSize, act_id);
 		return mv;
 	}
 	
