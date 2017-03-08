@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,7 +39,7 @@ public class ActManagerController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("actList",actList.get(0));
 		//活动展示页面名称
-		mv.setViewName("");
+		mv.setViewName("admin/active/act_list");
 		return mv;
 	}
 	
@@ -47,19 +48,22 @@ public class ActManagerController {
 	public ModelAndView getActGoods(@RequestParam("act_id") int act_id,@RequestParam("page")int page,@RequestParam("pageSize")int pageSize){
 		ModelAndView mv = new ModelAndView();
 		Page ActGoods = this.pagedaoimpl.getActGoodsList(page, pageSize, act_id);
+		mv.addObject("ActGoods",ActGoods);
+		mv.addObject("act_id",act_id);
+		mv.setViewName("admin/active/act_goods");
 		return mv;
 	}
 	
 	//删除活动关联的商品
-	@RequestMapping("/delActGoods")
+	@RequestMapping(value="/delActGoods",produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String delActGoods(@RequestParam("goods_id") int goods_id,@RequestParam("act_id") int act_id){
 		try {
 			this.actserviceimpl.delActGoods(act_id, goods_id);
-			return "";
+			return "删除关联商品成功";
 		} catch (Exception e) {
 			// TODO: handle exception
-			return "";
+			return "删除关联商品失败";
 		}
 	}
 	//获取活动没有关联的商品
@@ -68,19 +72,22 @@ public class ActManagerController {
 	{
 		ModelAndView mv = new ModelAndView();
 		Page ActNoGoods =this.pagedaoimpl.getNoActGoods(page, pageSize, act_id);
+		mv.addObject("ActNoGoods",ActNoGoods);
+		mv.addObject("act_id",act_id);
+		mv.setViewName("admin/active/act_nogoods");
 		return mv;
 	}
 	
 	//添加活动关联的商品
-	@RequestMapping("/addActGoods")
+	@RequestMapping(value="/addActGoods",produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public String addActGoods(@RequestParam("goods_id") int goods_id,@RequestParam("act_id") int act_id){
+	public String  addActGoods(@RequestParam("goods_id") int goods_id,@RequestParam("act_id") int act_id){
 		try {
 			this.actserviceimpl.addActGoods(act_id, goods_id);
-			return "";
+			return "关联商品成功";
 		} catch (Exception e) {
 			// TODO: handle exception
-			return "";
+			return "网络错误！请重试";
 		}
 	}
 }

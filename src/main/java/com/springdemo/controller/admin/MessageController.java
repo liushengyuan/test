@@ -21,7 +21,7 @@ public class MessageController {
 		ModelAndView mv = new ModelAndView();
 		Page pageList =this.messageserviceimpl.getMessageList(page, pageSize);
 		mv.addObject("pageList",pageList);
-		mv.setViewName("");
+		mv.setViewName("admin/message/message_list");
 		return mv;
 	}
 }

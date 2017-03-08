@@ -80,7 +80,7 @@ public class AdminController {
 	 @RequestMapping(value="/logout")
 	 public String logout(){
 		 HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
-		 request.getSession().setAttribute("adminUser","");
+		 request.getSession().removeAttribute("adminUser");
 		 return "login";
 	 }
 }

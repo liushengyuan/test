@@ -64,7 +64,7 @@ public class PageDaoImpl implements PageDao {
 	public Page getActGoodsList(int pageNo, int pageSize,int act_id) {
 		Page page=new Page();
 		int totalRows=0;
-		String sqlCount="select  count(id) from act_goods where act_id =?";
+		String sqlCount="select count(id) from goods where id in(select goods_id from act_goods where act_id =?)";
 		totalRows=  this.simpleJdbcTemplate.queryForInt(sqlCount,act_id);
 		page.setTotalRows(totalRows);
 		int c = totalRows%pageSize==0?totalRows/pageSize:totalRows/pageSize+1;
@@ -72,7 +72,7 @@ public class PageDaoImpl implements PageDao {
 		page.setPageSize(pageSize);
 		int currentPage=pageNo;
 		page.setCurrentPage(currentPage);
-		String sql="SELECT*from act_goods where act_id = ?  limit "+(currentPage-1)*pageSize+","+pageSize+"";
+		String sql="select * from goods where id in(SELECT goods_id from act_goods where act_id = ? ) limit "+(currentPage-1)*pageSize+","+pageSize+"";
 		List<Map<String, Object>> listGoods = this.simpleJdbcTemplate.queryForList(sql,act_id);
 		for (Map<String, Object> map : listGoods) {
 			page.getData().add(map);
@@ -83,7 +83,7 @@ public class PageDaoImpl implements PageDao {
 	public Page getNoActGoods(int pageNo, int pageSize,int act_id) {
 		Page page=new Page();
 		int totalRows=0;
-		String sqlCount="select  count(id) from act_goods where act_id !=?";
+		String sqlCount="select count(id) from goods where id not in(select goods_id from act_goods where act_id =?)";
 		totalRows=  this.simpleJdbcTemplate.queryForInt(sqlCount,act_id);
 		page.setTotalRows(totalRows);
 		int c = totalRows%pageSize==0?totalRows/pageSize:totalRows/pageSize+1;
@@ -91,7 +91,7 @@ public class PageDaoImpl implements PageDao {
 		page.setPageSize(pageSize);
 		int currentPage=pageNo;
 		page.setCurrentPage(currentPage);
-		String sql="SELECT*from act_goods where act_id != ?  limit "+(currentPage-1)*pageSize+","+pageSize+"";
+		String sql="select * from goods where id not in(SELECT goods_id from act_goods where act_id = ? ) limit "+(currentPage-1)*pageSize+","+pageSize+"";
 		List<Map<String, Object>> listGoods = this.simpleJdbcTemplate.queryForList(sql,act_id);
 		for (Map<String, Object> map : listGoods) {
 			page.getData().add(map);

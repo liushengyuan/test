@@ -55,6 +55,14 @@ function goDown(e,f){
 		location.href="getMessageList?page="+page+"&pageSize=3";
 	}
 }
+//查看活动关联的商品
+function addActGoods(e){
+	location.href="getActGoods?page=1&pageSize=3&act_id="+e.name;
+}
+//添加活动商品
+function getNoActGoods(e){
+	location.href="getNoActGoods?page=1&pageSize=3&act_id="+e.name;
+}
 </script>
 </head>
 <body>
@@ -63,34 +71,35 @@ function goDown(e,f){
 	<section class="rt_wrap content mCustomScrollbar">
 		<div class="rt_content">
 			<section>
-		     <h2><strong style="color:grey;">消息列表</strong></h2>
+		     <h2><strong style="color:grey;">活动列表</strong></h2>
 		     <div class="page_title">
-		      <h2 class="fl">消息列表</h2>
+		      <h2 class="fl">活动列表</h2>
 		     </div>
 		     <table class="table">
 		      <tr>
-		       <th>消息编号</th>
-		       <th>留言用户</th>
-		       <th>留言信息</th>
+		       <th>活动编号</th>
+		       <th>活动名称</th>
+		       <th>活动介绍</th>
 		       <th>操作</th>
 		      </tr>
-		      <c:forEach items="${pageList.data}" var="item">
+		     <%--  <c:forEach items="${pageList.data}" var="item"> --%>
 		      <tr>
-		       <td style="width:25px;"><div class="cut_title ellipsis">${item.id}</div></td>
-		       <td>${item.member_name}</td>
-		       <td>${item.message}</td>
+		       <td style="width:25px;"><div class="cut_title ellipsis">${actList.id}</div></td>
+		       <td>${actList.act_name}</td>
+		       <td>${actList.act_info}</td>
 		       <td>
-		        <a href="javascript:void(0)" class="inner_btn" name="${item.id}" onClick="delGoods(this)">删除</a>
+		        <a href="javascript:void(0)" class="inner_btn" name="${actList.id}" onClick="addActGoods(this)">查看活动关联商品</a>
+		        <a href="javascript:void(0)" class="inner_btn" name="${actList.id}" onClick="getNoActGoods(this)">添加活动关联商品</a>
 		       </td>
 		      </tr>
-		      </c:forEach>
+		      <%-- </c:forEach> --%>
 		     </table>
 		     
-		     <aside class="paging">
+		    <%--  <aside class="paging">
 		      <a onClick="goUP(${pageList.currentPage})">上一页</a>
 		      <a href="#">${pageList.currentPage}</a>
 		      <a onClick="goDown(${pageList.totalPage},${pageList.currentPage})">下一页</a>
-		     </aside>
+		     </aside> --%>
 		     
 		    </section>
 		</div>
