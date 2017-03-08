@@ -1,4 +1,4 @@
---新建消息表
+--新建消息表 2017/3/8
 CREATE TABLE `member_message` (
   `id` int(11) NOT NULL auto_increment,
   `member_id` int(11) default NULL,

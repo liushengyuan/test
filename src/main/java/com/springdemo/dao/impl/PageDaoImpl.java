@@ -21,7 +21,7 @@ public class PageDaoImpl implements PageDao {
 	
 	@Autowired
 	private SimpleJdbcTemplate simpleJdbcTemplate;
-	//分页显示
+	//分页显示商品列表
 	public Page showAlbum(int pageNo,int pageSize) {
 		// TODO Auto-generated method stub
 		Page page=new Page();
@@ -41,5 +41,24 @@ public class PageDaoImpl implements PageDao {
 		}
 		return page;
 	}
-
+	@Override
+	public Page showMessage(int pageNo, int pageSize) {
+		Page page=new Page();
+		int totalRows=0;
+		String sqlCount="select  count(id) from member_message";
+		totalRows=  this.simpleJdbcTemplate.queryForInt(sqlCount);
+		page.setTotalRows(totalRows);
+		int c = totalRows%pageSize==0?totalRows/pageSize:totalRows/pageSize+1;
+		page.setTotalPage(c);
+		page.setPageSize(pageSize);
+		int currentPage=pageNo;
+		page.setCurrentPage(currentPage);
+		String sql="SELECT*from member_message  limit "+(currentPage-1)*pageSize+","+pageSize+"";
+		List<Map<String, Object>> listGoods = this.simpleJdbcTemplate.queryForList(sql);
+		for (Map<String, Object> map : listGoods) {
+			page.getData().add(map);
+		}
+		return page;
+	}
+	
 }

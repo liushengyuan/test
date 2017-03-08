@@ -8,4 +8,11 @@ public interface PageDao {
 	 * @return
 	 */
 	public Page showAlbum(int pageNo,int pageSize);
+	/**
+	 * 分页显示消息列表
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public Page showMessage(int pageNo,int pageSize);
 }
