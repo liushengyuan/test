@@ -30,6 +30,8 @@
 		      <tr>
 		       <th>序号</th>
 		       <th>会员名</th>
+		       <th>地址</th>
+		       <th>手机号</th>
 		       <th>创建日期</th>
 		       <th>账号状态</th>
 		       <th>操作</th>
@@ -38,6 +40,8 @@
 		      <tr class="member-table">
 		       <td style="width:100px;">${ status.index+memberInfoPage.getStartIndex()+1 }</td>
 		       <td><c:out value="${memberInfo.memberName}" /></td>
+		       <td><c:out value="${memberInfo.address}" /></td>
+		       <td><c:out value="${memberInfo.mobile}" /></td>
 		       <td><c:out value="${memberInfo.createDate}" /></td>
 		       <td><c:out value="${memberInfo.ifFrozenAccount}" /></td>
 		       <td>
@@ -62,7 +66,7 @@
 		    </section>
 		</div>
 	</section>
-	<script>
+	<script type="text/javascript">
 		//上一页
 		$("#upPage").on('click',function(){
 			if(${memberInfoPage.getCurrentPage()}-1 == 0){

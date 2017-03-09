@@ -4,8 +4,24 @@ public class Member {
 	private Integer id; //会员id
 	private String memberName; // 会员名 
 	private String password;  // 会员登录密码
+	private String address; // 会员名 
+	private String mobile;  // 会员登录密码
 	private Integer ifFrozenAccount; //是否冻结账号
 	private String createDate;
+	
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 	
 	public String getCreateDate() {
 		return createDate;

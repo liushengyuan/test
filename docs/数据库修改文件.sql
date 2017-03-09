@@ -50,3 +50,23 @@ CREATE TABLE `order` (
   `phone` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+---增加会员信息表 2017-03-09
+CREATE TABLE `zd_member` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `memberName` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `mobile` varchar(100) NOT NULL,
+  `ifFrozenAccount` int(100) NOT NULL,
+  `createDate` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zd_member
+-- ----------------------------
+INSERT INTO `zd_member` VALUES ('1', 'an', 'an','天津市津南区','13552070611','0', '2017-01-12');
+INSERT INTO `zd_member` VALUES ('2', 'jun', 'jun','天津市南开区','13852070612', '1', '2017-01-13');
+INSERT INTO `zd_member` VALUES ('3', 'hai', 'hai', '天津市和平区','15552070613','0', '2017-01-14');
+INSERT INTO `zd_member` VALUES ('4', 'xu', '123456','天津市河东区','18752070614', '0', '2017-03-08 08:42:22');
+INSERT INTO `zd_member` VALUES ('5', 'zhang', '123456', '天津市红桥区','13752070615','0', '2017-03-08 08:45:50');
