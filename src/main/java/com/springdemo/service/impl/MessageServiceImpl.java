@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.springdemo.dao.MessageDao;
 import com.springdemo.dao.PageDao;
+import com.springdemo.po.MemberMessage;
 import com.springdemo.po.Page;
 import com.springdemo.service.MessageService;
 @Service
@@ -27,6 +28,12 @@ public class MessageServiceImpl implements MessageService{
 	public void removeMessage(int id) {
 		// TODO Auto-generated method stub
 		this.messagedaoimpl.removeMessage(id);
+	}
+
+	@Override
+	public void addMessage(MemberMessage message) {
+		// TODO Auto-generated method stub
+		this.messagedaoimpl.addMessage(message);
 	}
 
 }

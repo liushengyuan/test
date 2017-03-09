@@ -1,12 +1,17 @@
 package com.springdemo.controller.admin;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springdemo.po.MemberMessage;
 import com.springdemo.po.Page;
 import com.springdemo.service.MessageService;
 
@@ -37,5 +42,19 @@ public class MessageController {
 			return "网络出现问题";
 		}
 		
+	}
+	@RequestMapping(value="/addMessage",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String addMessage(){
+		try {
+			HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+			MemberMessage message =new MemberMessage();
+			String price = request.getParameter("price");
+			this.messageserviceimpl.addMessage(message);
+			return "发送留言成功";
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "网络错误";
+		}
 	}
 }

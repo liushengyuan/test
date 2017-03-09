@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springdemo.dao.MessageDao;
+import com.springdemo.po.MemberMessage;
 
 @SuppressWarnings("deprecation")
 @Repository 
@@ -23,6 +24,13 @@ public class MessageDaoImpl implements MessageDao{
 		String sql="delete from member_message where id="+id;
 		this.simpleJdbcTemplate.update(sql);
 		
+	}
+
+	@Override
+	public void addMessage(MemberMessage message) {
+		// TODO Auto-generated method stub
+		String sql="insert into member_message (member_name,message,member_email,member_phone) values (?,?,?,?)";
+		this.simpleJdbcTemplate.update(sql, message.getMember_name(),message.getMessage(),message.getMember_email(),message.getMember_phone());
 	}
 
 }

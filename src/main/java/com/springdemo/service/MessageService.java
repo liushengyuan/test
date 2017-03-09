@@ -1,6 +1,7 @@
 package com.springdemo.service;
 
 
+import com.springdemo.po.MemberMessage;
 import com.springdemo.po.Page;
 
 public interface MessageService {
@@ -16,4 +17,9 @@ public interface MessageService {
 	 * @param id
 	 */
 	public void removeMessage(int id);
+	/**
+	 * 会员发送消息
+	 * @param message
+	 */
+	public void addMessage(MemberMessage message);
 }
