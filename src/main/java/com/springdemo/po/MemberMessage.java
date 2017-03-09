@@ -5,6 +5,8 @@ public class MemberMessage {
 	private int member_id;
 	private String member_name;
 	private String message;
+	private String member_email;
+	private int member_phone;
 	public int getId() {
 		return id;
 	}
@@ -28,6 +30,18 @@ public class MemberMessage {
 	}
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	public String getMember_email() {
+		return member_email;
+	}
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
+	}
+	public int getMember_phone() {
+		return member_phone;
+	}
+	public void setMember_phone(int member_phone) {
+		this.member_phone = member_phone;
 	}
 	
 }

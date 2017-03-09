@@ -19,4 +19,7 @@ CREATE TABLE `act_goods` (
   `goods_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+--添加member_email 字段 2017/3/9
+alter table 'member_message' add 'member_email' varchar(255) DEFAULT NULL;
+--添加member_phone 字段 2017/3/9
+alter table 'member_message' add 'member_phone' int(11) DEFAULT NULL;
