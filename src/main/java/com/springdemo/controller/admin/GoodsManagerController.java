@@ -54,6 +54,7 @@ public class GoodsManagerController {
 	@ResponseBody
 	public String getClass(@RequestParam("child") int child){
 		String childs="";
+		String sql="";
 		if(child==0){
 			childs="上衣";
 		}else if(child==1){
@@ -61,10 +62,10 @@ public class GoodsManagerController {
 		}else if(child==2){
 			childs="鞋子";
 		}else{
-			return "网路错误！";
+			sql="select * from child_cla";
 		}
-		String sql="select * from child_cla where child_cla= ?";
-		List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql,childs);
+		sql="select * from child_cla where child_cla="+childs;
+		List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
 		 Gson gson = new Gson();
 		 String json = gson.toJson(list);
 		 return json; 
