@@ -38,3 +38,15 @@ alter table act add status int(11) DEFAULT NULL;
 --cart 添加num 字段  2017-3-9
 alter table cart add num int(11) DEFAULT NULL;
 alter table cart add member_id int(11) DEFAULT NULL;
+--订单表 2017-3-9
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cat_id` int(11) DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  `member_id` int(11) DEFAULT NULL,
+  `time` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

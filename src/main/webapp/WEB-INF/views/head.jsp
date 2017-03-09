@@ -4,7 +4,7 @@
     String path = request.getContextPath();  
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
 %>  
-<c:set value="<%=path%>" var="path" />  
+<c:set value="<%=path%>" var="path"/>  
 <header>
  <h1><img src="images/admin_logo.png"/></h1>
  <ul class="rt_nav">
