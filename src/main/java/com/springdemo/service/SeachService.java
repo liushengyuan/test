@@ -2,7 +2,7 @@ package com.springdemo.service;
 
 import java.util.List;
 
-public interface SeachDao {
+public interface SeachService {
 	/**
 	 * 获得搜索的活动的列表
 	 * @param cla

@@ -31,7 +31,7 @@ public class CartManagerController {
 	}
 	
 	//删除购物车的所有商品
-	@RequestMapping(value="/delCartGoods",produces = "application/json; charset=utf-8")
+	@RequestMapping(value="/delAllCartGoods",produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String delAllCartGoods(){
 		try {
@@ -70,7 +70,7 @@ public class CartManagerController {
 	}
 	
 	//查看购物车商品
-	@RequestMapping(value="/addCartGoods",produces = "application/json; charset=utf-8")
+	@RequestMapping(value="/getCartGoods",produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String getCartGoods(){
 		try {

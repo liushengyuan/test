@@ -5,14 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.springdemo.service.SeachDao;
+import com.springdemo.service.SeachService;
 
 @Controller
 @RequestMapping("/seach")
 public class SeachManagerController {
 	
 	@Autowired
-	private SeachDao seachdaoimpl;
+	private SeachService seachserviceimpl;
 	
 	@RequestMapping("/getSeachList")
 	@ResponseBody
