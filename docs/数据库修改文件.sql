@@ -20,9 +20,9 @@ CREATE TABLE `act_goods` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --添加member_email 字段 2017/3/9
-alter table 'member_message' add 'member_email' varchar(255) DEFAULT NULL;
+alter table member_message add member_email varchar(255) DEFAULT NULL;
 --添加member_phone 字段 2017/3/9
-alter table 'member_message' add 'member_phone' int(11) DEFAULT NULL;
+alter table member_message add member_phone int(11) DEFAULT NULL;
 --创建购物车表
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -33,3 +33,5 @@ CREATE TABLE `cart` (
   `is_select` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+--活动表是否显示添加字段  2017-3-9
+alter table act add status int(11) DEFAULT NULL;
