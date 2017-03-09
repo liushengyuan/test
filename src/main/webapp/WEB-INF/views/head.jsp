@@ -36,7 +36,7 @@
   <li>
    <dl>
     <dt>会员管理</dt>
-    <dd><a href="#">会员列表</a></dd>
+    <dd><a href="../admin/getMemberList?page=1&numPerPage=10">会员列表</a></dd>
    <!--  <dd><a href="#">添加会员</a></dd> -->
    </dl>
   </li>
