@@ -35,3 +35,6 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --活动表是否显示添加字段  2017-3-9
 alter table act add status int(11) DEFAULT NULL;
+--cart 添加num 字段  2017-3-9
+alter table cart add num int(11) DEFAULT NULL;
+alter table cart add member_id int(11) DEFAULT NULL;
