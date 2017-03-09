@@ -23,3 +23,13 @@ CREATE TABLE `act_goods` (
 alter table 'member_message' add 'member_email' varchar(255) DEFAULT NULL;
 --添加member_phone 字段 2017/3/9
 alter table 'member_message' add 'member_phone' int(11) DEFAULT NULL;
+--创建购物车表
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `goods_id` int(11) DEFAULT NULL,
+  `goods_name` varchar(255) DEFAULT NULL,
+  `goods_image1` varchar(255) DEFAULT NULL,
+  `goods_price` double DEFAULT NULL,
+  `is_select` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
