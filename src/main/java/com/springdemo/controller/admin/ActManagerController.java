@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.springdemo.dao.PageDao;
 import com.springdemo.po.Page;
 import com.springdemo.service.ActService;
@@ -92,14 +93,16 @@ public class ActManagerController {
 	}
 	//获得活动列表
 	@RequestMapping(value="/getActList",produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public String getActList(){
+	public ModelAndView getActList(){
+		ModelAndView mv = new ModelAndView();
 		try {
 			List actGoodsList =this.actserviceimpl.getActGoods();
-			return "";
+			mv.addObject("actGoodsList",actGoodsList);
+			mv.setViewName("../../index.jsp");
+	        return mv;
 		} catch (Exception e) {
 			// TODO: handle exception
-			return "网络错误！";
+			return mv;
 		}
 	}
 }
