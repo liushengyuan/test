@@ -1,5 +1,7 @@
 package com.springdemo.dao;
 
+import java.util.List;
+
 public interface ActDao {
 	/**
 	 * 添加活动关联的商品
@@ -13,4 +15,9 @@ public interface ActDao {
 	 * @param goods_id
 	 */
 	public void delActGoods(int act_id,int goods_id);
+	/**
+	 * 获取活动列表
+	 * @return
+	 */
+	public List getActGoodsList();
 }

@@ -90,4 +90,16 @@ public class ActManagerController {
 			return "网络错误！请重试";
 		}
 	}
+	//获得活动列表
+	@RequestMapping(value="/getActList",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String getActList(){
+		try {
+			List actGoodsList =this.actserviceimpl.getActGoods();
+			return "";
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "网络错误！";
+		}
+	}
 }
