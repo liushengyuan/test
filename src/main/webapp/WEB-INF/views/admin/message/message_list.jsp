@@ -55,6 +55,24 @@ function goDown(e,f){
 		location.href="getMessageList?page="+page+"&pageSize=3";
 	}
 }
+//删除
+function delGoods(e){
+	$.ajax({  
+	    url: "removeMessage?id="+e.name,  
+	    //data: { "selectedIDs": _list },  
+	    type: "POST",  
+	    //traditional: true,  
+	    success: function (responseJSON) {  
+	        // your logic
+	        alert(responseJSON);
+	        location.href="getMessageList?page=1&pageSize=3";
+	    },
+	    error: function (rs){
+	    	alert(rs.responseText);
+	    	return;
+	    }
+	});
+}
 </script>
 </head>
 <body>
@@ -72,6 +90,7 @@ function goDown(e,f){
 		       <th>消息编号</th>
 		       <th>留言用户</th>
 		       <th>留言信息</th>
+		       <th>用户手机</th>
 		       <th>操作</th>
 		      </tr>
 		      <c:forEach items="${pageList.data}" var="item">
@@ -79,6 +98,7 @@ function goDown(e,f){
 		       <td style="width:25px;"><div class="cut_title ellipsis">${item.id}</div></td>
 		       <td>${item.member_name}</td>
 		       <td>${item.message}</td>
+		       <td>${item.member_phone}</td>
 		       <td>
 		        <a href="javascript:void(0)" class="inner_btn" name="${item.id}" onClick="delGoods(this)">删除</a>
 		       </td>
