@@ -140,4 +140,15 @@ public class GoodsManagerController {
 		this.getGoodsPage("1", "3");
 		return this.getGoodsPage("1", "3");
 	}
+	//后台查询订单列表
+	@RequestMapping("/getOrderPage")
+	public ModelAndView getOrderPage(@RequestParam("page") String page,@RequestParam("pageSize") String pageSize){
+		ModelAndView mv = new ModelAndView();
+		int pageNo=Integer.valueOf(page);
+		int pageSizeNum =Integer.valueOf(pageSize);
+		Page orderPage = this.goodsService.getOrderPage(pageNo, pageSizeNum);
+		mv.addObject("goodsPage",orderPage);
+		mv.setViewName("");
+		return  mv;
+	}
 }

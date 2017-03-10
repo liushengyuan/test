@@ -29,4 +29,11 @@ public interface PageDao {
 	 * @return
 	 */
 	public Page getNoActGoods(int pageNo,int pageSize,int act_id);
+	/**
+	 * 获取所有订单
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public Page getAllOrder(int pageNo,int pageSize);
 }

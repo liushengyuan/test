@@ -47,5 +47,11 @@ public class GoodsServiceImpl implements GoodsService{
 		// TODO Auto-generated method stub
 		this.goodsdaoimpl.changeGoods(goods_id, style);
 	}
+
+	@Override
+	public Page getOrderPage(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		return this.pagedaoimpl.getAllOrder(page, pageSize);
+	}
 	
 }

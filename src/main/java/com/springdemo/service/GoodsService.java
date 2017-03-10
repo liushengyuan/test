@@ -31,4 +31,11 @@ public interface GoodsService {
 	 * @param style
 	 */
 	public void changeGoods(int goods_id,int style);
+	/**
+	 * 后台获得订单列表
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public Page getOrderPage(int page,int pageSize);
 }
