@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.springdemo.po.Cart;
 import com.springdemo.service.CartService;
 
 @Controller
@@ -79,6 +80,18 @@ public class CartManagerController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			return "网络错误！";
+		}
+	}
+	@RequestMapping(value="/addCart",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String addCart(){
+		try {
+			Cart cart = new Cart();
+			this.cartserviceimpl.addCart(cart);
+			return "加入成功！";
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "网络出现问题";
 		}
 	}
 }

@@ -2,6 +2,8 @@ package com.springdemo.service;
 
 import java.util.List;
 
+import com.springdemo.po.Cart;
+
 public interface CartService {
 	/**
 	 * 删除购物车商品
@@ -33,4 +35,9 @@ public interface CartService {
 	 * @param num
 	 */
 	public void dowmCartGood(Integer member_id,Integer goods_id,Integer num);
+	/**
+	 * 添加购物车
+	 * @param cart
+	 */
+	public void addCart(Cart cart);
 }

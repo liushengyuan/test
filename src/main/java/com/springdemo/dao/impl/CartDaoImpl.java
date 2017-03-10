@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springdemo.dao.CartDao;
+import com.springdemo.po.Cart;
 @SuppressWarnings("deprecation")
 @Repository 
 public class CartDaoImpl implements CartDao{
@@ -51,6 +52,13 @@ public class CartDaoImpl implements CartDao{
 		// TODO Auto-generated method stub
 		String sql ="UPDATE cart SET num = ? WHERE member_id = ? and goods_id= ? ";
 		this.simpleJdbcTemplate.update(sql, num,member_id,goods_id);
+	}
+
+	@Override
+	public void addCart(Cart cart) {
+		// TODO Auto-generated method stub
+		String sql ="insert into cart(goods_id,goods_name,goods_image1,goods_price,is_select) values(?,?,?,?,?)";
+		this.simpleJdbcTemplate.update(sql, cart.getGoods_id(),cart.getGoods_name(),cart.getGoods_image1(),1);
 	}
 
 }
