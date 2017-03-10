@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <div class="header">
 	<div class="header-top">
 		<div class="container">
@@ -43,15 +44,15 @@
 								<div class="h_nav">
 									<h4>上衣</h4>
 									<ul>
-									<li><a href="products.html">棉衣</a></li>
-									<li><a href="products.html">毛衣</a></li>
-									<li><a href="products.html">风衣</a></li>
-									<li><a href="products.html">大衣</a></li>
-									<li><a href="products.html">衬衫</a></li>	
-									<li><a href="products.html">卫衣</a></li>	
-									<li><a href="products.html">小西装</a></li>	
-									<li><a href="products.html">小背心</a></li>
-									<li><a href="products.html">T恤</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=0&three_cla=1">棉衣</a></li>
+									<li><a href="getSeachList?cla=0&child_cla=0&three_cla=2">毛衣</a></li>
+									<li><a href="getSeachList?cla=0&child_cla=0&three_cla=3">风衣</a></li>
+									<li><a href="getSeachList?cla=0&child_cla=0&three_cla=4">大衣</a></li>
+									<li><a href="getSeachList?cla=0&child_cla=0&three_cla=5">衬衫</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=0&three_cla=6">卫衣</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=0&three_cla=7">小西装</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=0&three_cla=8">小背心</a></li>
+									<li><a href="getSeachList?cla=0&child_cla=0&three_cla=9">T恤</a></li>	
 									</ul>	
 								</div>							
 							</div>
@@ -59,12 +60,12 @@
 								<div class="h_nav">
 									<h4>裤子</h4>
 									<ul>
-									<li><a href="products.html">牛仔裤 </a></li>
-									<li><a href="products.html">休闲裤</a></li>	
-									<li><a href="products.html">运动裤</a></li>	
-									<li><a href="products.html">打底裤</a></li>	
-									<li><a href="products.html">背带裤</a></li>
-									<li><a href="products.html">靴裤</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=1&three_cla=10">牛仔裤 </a></li>
+									<li><a href="getSeachList?cla=0&child_cla=1&three_cla=11">休闲裤</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=1&three_cla=12">运动裤</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=1&three_cla=13">打底裤</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=1&three_cla=14">背带裤</a></li>
+									<li><a href="getSeachList?cla=0&child_cla=1&three_cla=15">靴裤</a></li>	
 									</ul>	
 								</div>							
 							</div>
@@ -72,11 +73,11 @@
 								<div class="h_nav">
 									<h4>鞋</h4>
 									<ul>
-									<li><a href="products.html">皮鞋 </a></li>
-									<li><a href="products.html">凉鞋</a></li>	
-									<li><a href="products.html">布鞋</a></li>	
-									<li><a href="products.html">人造革鞋</a></li>	
-									<li><a href="products.html">饰品鞋</a></li>
+									<li><a href="getSeachList?cla=0&child_cla=2&three_cla=16">皮鞋 </a></li>
+									<li><a href="getSeachList?cla=0&child_cla=2&three_cla=17">凉鞋</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=2&three_cla=18">布鞋</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=2&three_cla=19">人造革鞋</a></li>	
+									<li><a href="getSeachList?cla=0&child_cla=2&three_cla=20">饰品鞋</a></li>
 									</ul>	
 								</div>												
 							</div>
@@ -90,15 +91,15 @@
 								<div class="h_nav">
 									<h4>上衣</h4>
 									<ul>
-									<li><a href="products.html">棉衣</a></li>
-									<li><a href="products.html">毛衣</a></li>
-									<li><a href="products.html">风衣</a></li>
-									<li><a href="products.html">大衣</a></li>
-									<li><a href="products.html">衬衫</a></li>	
-									<li><a href="products.html">卫衣</a></li>	
-									<li><a href="products.html">小西装</a></li>	
-									<li><a href="products.html">小背心</a></li>
-									<li><a href="products.html">T恤</a></li>		
+									<li><a href="getSeachList?cla=1&child_cla=0&three_cla=1">棉衣</a></li>
+									<li><a href="getSeachList?cla=1&child_cla=0&three_cla=2">毛衣</a></li>
+									<li><a href="getSeachList?cla=1&child_cla=0&three_cla=3">风衣</a></li>
+									<li><a href="getSeachList?cla=1&child_cla=0&three_cla=4">大衣</a></li>
+									<li><a href="getSeachList?cla=1&child_cla=0&three_cla=5">衬衫</a></li>	
+									<li><a href="getSeachList?cla=1&child_cla=0&three_cla=6">卫衣</a></li>	
+									<li><a href="getSeachList?cla=1&child_cla=0&three_cla=7">小西装</a></li>	
+									<li><a href="getSeachList?cla=1&child_cla=0&three_cla=8">小背心</a></li>
+									<li><a href="getSeachList?cla=1&child_cla=0&three_cla=9">T恤</a></li>
 									</ul>	
 								</div>							
 							</div>
@@ -106,12 +107,12 @@
 								<div class="h_nav">
 									<h4>裤子</h4>
 									<ul>
-									<li><a href="products.html">牛仔裤 </a></li>
-									<li><a href="products.html">休闲裤</a></li>	
-									<li><a href="products.html">运动裤</a></li>	
-									<li><a href="products.html">打底裤</a></li>	
-									<li><a href="products.html">背带裤</a></li>
-									<li><a href="products.html">靴裤</a></li>	
+									<li><a href="getSeachList?cla=1&child_cla=1&three_cla=10">牛仔裤 </a></li>
+									<li><a href="getSeachList?cla=1&child_cla=1&three_cla=11">休闲裤</a></li>	
+									<li><a href="getSeachList?cla=1&child_cla=1&three_cla=12">运动裤</a></li>	
+									<li><a href="getSeachList?cla=1&child_cla=1&three_cla=13">打底裤</a></li>	
+									<li><a href="getSeachList?cla=1&child_cla=1&three_cla=14">背带裤</a></li>
+									<li><a href="getSeachList?cla=1&child_cla=1&three_cla=15">靴裤</a></li>	
 									</ul>
 								</div>							
 							</div>
@@ -119,11 +120,11 @@
 								<div class="h_nav">
 									<h4>鞋</h4>
 									<ul>
-									<li><a href="products.html">皮鞋 </a></li>
-									<li><a href="products.html">凉鞋</a></li>	
-									<li><a href="products.html">布鞋</a></li>	
-									<li><a href="products.html">人造革鞋</a></li>	
-									<li><a href="products.html">饰品鞋</a></li>
+									<li><a href="getSeachList?cla=1&child_cla=2&three_cla=16">皮鞋 </a></li>
+									<li><a href="getSeachList?cla=1&child_cla=2&three_cla=17">凉鞋</a></li>	
+									<li><a href="getSeachList?cla=1&child_cla=2&three_cla=18">布鞋</a></li>	
+									<li><a href="getSeachList?cla=1&child_cla=2&three_cla=19">人造革鞋</a></li>	
+									<li><a href="getSeachList?cla=1&child_cla=2&three_cla=20">饰品鞋</a></li>
 									</ul>	
 								</div>												
 							</div>

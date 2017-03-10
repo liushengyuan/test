@@ -24,19 +24,23 @@ public class GoodsClaDaoImpl implements GoodsClaDao{
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT * FROM goods where is_check=1");
 		if(cla!=null){
-			sql.append(" and id in (select goods_id from goods_cla where cla="+cla+")");
+			sql.append(" and id in (select goods_id from goodscla where cla="+cla+")");
 		}
 		if(child_cla!=null){
-			sql.append(" and id in (select goods_id from goods_cla where child_cla="+child_cla+")");
+			sql.append(" and id in (select goods_id from goodscla where child_cla="+child_cla+")");
 		}
 		if(three_cla!=null){
-			sql.append(" and id in (select goods_id from goods_cla where three_cla="+three_cla+")");
+			sql.append(" and id in (select goods_id from goodscla where three_cla="+three_cla+")");
 		}
-		if(keyword!=null&&keyword!=""){
+		if(keyword==null||"".equals(keyword)){
+			List goodsList = this.simpleJdbcTemplate.queryForList(sql.toString());
+			return goodsList;
+		}else{
 			sql.append(" and goods_name like %"+keyword+"%");
+			List goodsList = this.simpleJdbcTemplate.queryForList(sql.toString());
+			return goodsList;
 		}
-		List goodsList = this.simpleJdbcTemplate.queryForList(sql.toString());
-		return goodsList;
+		
 	}
 
 }

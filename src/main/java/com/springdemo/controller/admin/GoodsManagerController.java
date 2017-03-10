@@ -64,7 +64,8 @@ public class GoodsManagerController {
 		}else{
 			sql="select * from child_cla";
 		}
-		sql="select * from child_cla where child_cla="+childs;
+		System.out.println(childs);
+		sql="select * from child_cla where child_cla='"+childs+"'";
 		List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
 		 Gson gson = new Gson();
 		 String json = gson.toJson(list);
