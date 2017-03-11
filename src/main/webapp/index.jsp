@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <c:if test="${actGoodsList==null }">
-<jsp:forward page="shop/getActList"></jsp:forward>
+<jsp:forward page="getActList"></jsp:forward>
 </c:if>
 <!DOCTYPE html>
 <html>
@@ -121,10 +121,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<c:forEach items="${actGoodsList}" var="item">
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single.html">
+						<a href="getGoodsInfo?goods_id=${item.id}">
 							<img class="img-responsive" src="images/pi3.png" alt="" name="${item.image1}" onload='changImg(this)' />
 						</a>
-						<h3><a href="single.html">${item.name}</a></h3>
+						<h3><a href="getGoodsInfo?goods_id=${item.id}">${item.name}</a></h3>
 						<div class="price">
 								<h5 class="item_price">$${item.price}</h5>
 								<a href="#" class="item_add">Add To Cart</a>

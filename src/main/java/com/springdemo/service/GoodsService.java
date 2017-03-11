@@ -1,5 +1,7 @@
 package com.springdemo.service;
 
+import java.util.List;
+
 import com.springdemo.po.Goods;
 import com.springdemo.po.Goodscla;
 import com.springdemo.po.Page;
@@ -38,4 +40,10 @@ public interface GoodsService {
 	 * @return
 	 */
 	public Page getOrderPage(int page,int pageSize);
+	/**
+	 * 获取商品详情
+	 * @param goods_id
+	 * @return
+	 */
+	public List<Goods> getGoodsInfo(int goods_id);
 }

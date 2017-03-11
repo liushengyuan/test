@@ -1,5 +1,7 @@
 package com.springdemo.dao;
 
+import java.util.List;
+
 import com.springdemo.po.Goods;
 import com.springdemo.po.Goodscla;
 
@@ -26,4 +28,10 @@ public interface GoodsDao {
 	 * @param style
 	 */
 	public void changeGoods(int goods_id,int style);
+	/**
+	 * 获取商品详情
+	 * @param goods_id
+	 * @return
+	 */
+	public List<Goods> getGoodsInfo(int goods_id);
 }

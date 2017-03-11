@@ -82,6 +82,7 @@ public class CartManagerController {
 			return "网络错误！";
 		}
 	}
+	//加入购物车
 	@RequestMapping(value="/addCart",produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String addCart(){

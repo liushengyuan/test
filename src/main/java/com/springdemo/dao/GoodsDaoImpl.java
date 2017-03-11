@@ -1,13 +1,17 @@
 package com.springdemo.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import com.springdemo.po.Admin;
 import com.springdemo.po.Goods;
 import com.springdemo.po.Goodscla;
 
@@ -47,6 +51,15 @@ public class GoodsDaoImpl implements GoodsDao{
 			 sql="update goods set is_check=1 where id = ?";
 		}
 		this.simpleJdbcTemplate.update(sql,goods_id);
+	}
+	@Override
+	public List<Goods>  getGoodsInfo(int goods_id) {
+		// TODO Auto-generated method stub
+		String sql="select * from goods where id= ?";
+		
+		List<Goods> list = this.simpleJdbcTemplate.query(sql,
+				ParameterizedBeanPropertyRowMapper.newInstance(Goods.class), goods_id);
+		return list;
 	}
 
 }

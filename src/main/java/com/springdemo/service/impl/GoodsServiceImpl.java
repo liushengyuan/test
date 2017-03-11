@@ -1,5 +1,7 @@
 package com.springdemo.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +54,12 @@ public class GoodsServiceImpl implements GoodsService{
 	public Page getOrderPage(int page, int pageSize) {
 		// TODO Auto-generated method stub
 		return this.pagedaoimpl.getAllOrder(page, pageSize);
+	}
+
+	@Override
+	public List<Goods> getGoodsInfo(int goods_id) {
+		// TODO Auto-generated method stub
+		return this.goodsdaoimpl.getGoodsInfo(goods_id);
 	}
 	
 }
