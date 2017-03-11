@@ -6,13 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.springdemo.po.Goods;
 import com.springdemo.po.Order;
 import com.springdemo.service.ActService;
 import com.springdemo.service.GoodsService;
 import com.springdemo.service.OrderService;
+import com.springdemo.service.SeachService;
 
 @Controller
 public class ShopManagerController {
@@ -22,6 +25,8 @@ public class ShopManagerController {
 	private OrderService orderserviceimpl;
 	@Autowired
 	private GoodsService goodsserviceimpl;
+	@Autowired
+	private SeachService seachserviceimpl;
 		//获得活动列表
 		@RequestMapping(value="/getActList",produces = "application/json; charset=utf-8")
 		public ModelAndView getActList(){
@@ -77,5 +82,18 @@ public class ShopManagerController {
 				mv.setViewName("../../shop/single");
 				return mv;
 			}
+		}
+		//搜索
+		@RequestMapping("/getSeach")
+		@ResponseBody
+		public String getSeach(@RequestParam(value = "cla", required = false, defaultValue = "") Integer cla,
+				@RequestParam(value = "child_cla", required = false, defaultValue = "") Integer child_cla,
+				@RequestParam(value = "three_cla", required = false, defaultValue = "") Integer three_cla,
+				@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword){
+			
+			List goodsList = this.seachserviceimpl.getSeachGoodsList(cla, child_cla, three_cla, keyword);
+			Gson gson = new Gson();
+			String json = gson.toJson(goodsList);
+			return json;
 		}
 }

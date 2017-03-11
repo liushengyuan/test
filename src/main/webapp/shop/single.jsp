@@ -30,11 +30,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			    <li data-thumb= "${goodsinfo.image1}">
 			        <div class="thumb-image"> <img src="${goodsinfo.image1}" data-imagezoom="true" class="img-responsive" > </div>
 			    </li>
-			    <li data-thumb= "${goodsinfo.image1}">
-			         <div class="thumb-image"> <img src="${goodsinfo.image1}" data-imagezoom="true" class="img-responsive"> </div>
+			    <li data-thumb= "${goodsinfo.image2}">
+			         <div class="thumb-image"> <img src="${goodsinfo.image2}" data-imagezoom="true" class="img-responsive"> </div>
 			    </li>
-			    <li data-thumb= "${goodsinfo.image1}">
-			       <div class="thumb-image"> <img src="${goodsinfo.image1}" data-imagezoom="true" class="img-responsive" > </div>
+			    <li data-thumb= "${goodsinfo.image3}">
+			       <div class="thumb-image"> <img src="${goodsinfo.image3}" data-imagezoom="true" class="img-responsive" > </div>
 			    </li> 
 			  </ul>
 		</div>

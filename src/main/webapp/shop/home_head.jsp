@@ -6,20 +6,20 @@
 		<div class="container">
 		<div class="col-sm-4 world">
 					<ul >
-						<p class="log"><a href="account.html"  >Login</a>
-						<span>or</span><a  href="account.html"  >Signup</a></p>
+						<p class="log"><a href="account.jsp"  >Login</a>
+						<span>or</span><a  href="account.jsp"  >Signup</a></p>
 					</ul>
 				</div>
 				<div class="col-sm-4 logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>	
+					<a href="index.jsp"><img src="images/logo.png" alt=""></a>	
 				</div>
 		
 			<div class="col-sm-4 header-left">		
 					
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="shop/checkout.jsp">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span></div>
+							</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
 
@@ -131,6 +131,6 @@
 						  </div>
 						</div>
 			    </li>
-				<li><a class="color6" href="contact.html">联系我们</a></li>
+				<li><a class="color6" href="contact.jsp">联系我们</a></li>
 			  </ul> 
 			</div>
