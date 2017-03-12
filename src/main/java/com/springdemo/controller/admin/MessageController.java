@@ -43,18 +43,5 @@ public class MessageController {
 		}
 		
 	}
-	@RequestMapping(value="/addMessage",produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public String addMessage(){
-		try {
-			HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-			MemberMessage message =new MemberMessage();
-			String price = request.getParameter("price");
-			this.messageserviceimpl.addMessage(message);
-			return "发送留言成功";
-		} catch (Exception e) {
-			// TODO: handle exception
-			return "网络错误";
-		}
-	}
+	
 }

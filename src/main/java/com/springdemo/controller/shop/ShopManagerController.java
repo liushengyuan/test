@@ -2,18 +2,24 @@ package com.springdemo.controller.shop;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.springdemo.po.Goods;
+import com.springdemo.po.MemberMessage;
 import com.springdemo.po.Order;
 import com.springdemo.service.ActService;
 import com.springdemo.service.GoodsService;
+import com.springdemo.service.MessageService;
 import com.springdemo.service.OrderService;
 import com.springdemo.service.SeachService;
 
@@ -27,6 +33,8 @@ public class ShopManagerController {
 	private GoodsService goodsserviceimpl;
 	@Autowired
 	private SeachService seachserviceimpl;
+	@Autowired
+	private MessageService messageserviceimpl;
 		//获得活动列表
 		@RequestMapping(value="/getActList",produces = "application/json; charset=utf-8")
 		public ModelAndView getActList(){
@@ -83,17 +91,29 @@ public class ShopManagerController {
 				return mv;
 			}
 		}
-		//搜索
-		@RequestMapping("/getSeach")
+		//添加消息
+		@RequestMapping(value="/addMessage",produces = "application/json; charset=utf-8")
 		@ResponseBody
-		public String getSeach(@RequestParam(value = "cla", required = false, defaultValue = "") Integer cla,
-				@RequestParam(value = "child_cla", required = false, defaultValue = "") Integer child_cla,
-				@RequestParam(value = "three_cla", required = false, defaultValue = "") Integer three_cla,
-				@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword){
-			
-			List goodsList = this.seachserviceimpl.getSeachGoodsList(cla, child_cla, three_cla, keyword);
-			Gson gson = new Gson();
-			String json = gson.toJson(goodsList);
-			return json;
+		public String addMessage(){
+			try {
+				HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+				String name =request.getParameter("name");
+				String email =request.getParameter("email");
+				String myphone =request.getParameter("phone");
+				String messageInfo =request.getParameter("info");
+				MemberMessage message =new MemberMessage();
+				message.setMember_email(email);
+				message.setMember_id(0);
+				message.setMember_name(name);
+				int phonenum=Integer.valueOf(myphone.trim());
+				message.setMember_phone(phonenum);
+				message.setMessage(messageInfo);
+				this.messageserviceimpl.addMessage(message);
+				return "发送留言成功";
+			} catch (Exception e) {
+				// TODO: handle exception
+				return "网络错误";
+			}
 		}
+		
 }

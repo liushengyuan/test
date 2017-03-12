@@ -79,7 +79,7 @@ function submit(){
 	var childClass =$("#childClass").find("option:checked").attr("value");
 	var threeClass =$("#threeClass").find("option:checked").attr("value");
 	test();
-	if(name==""||price==""||info==""||is_check==""||image1==""||image2==""||image3==""||class2==""||childClass==""||threeClass==""){
+	if(!name||!price||!info||!is_check||!image1||!image2||!image3||!class2||!childClass||!threeClass){
 		alert("请检查数据！");
 		return;
 	}
