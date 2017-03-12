@@ -21,6 +21,7 @@ import com.springdemo.po.Member;
 import com.springdemo.po.MemberMessage;
 import com.springdemo.po.Order;
 import com.springdemo.service.ActService;
+import com.springdemo.service.CartService;
 import com.springdemo.service.GoodsService;
 import com.springdemo.service.MemberService;
 import com.springdemo.service.MessageService;
@@ -41,6 +42,8 @@ public class ShopManagerController {
 	private MessageService messageserviceimpl;
 	@Autowired
 	private MemberService memberserviceimpl;
+	@Autowired
+	private CartService cartserviceimpl;
 		//获得活动列表
 		@RequestMapping(value="/getActList",produces = "application/json; charset=utf-8")
 		public ModelAndView getActList(){
@@ -170,6 +173,28 @@ public class ShopManagerController {
 			} catch (Exception e) {
 				// TODO: handle exception
 				return "网络错误";
+			}
+		}
+		//查看购物车商品
+		@RequestMapping(value="/getCartGoods",produces = "application/json; charset=utf-8")
+		@ResponseBody
+		public ModelAndView getCartGoods(){
+			ModelAndView mv = new ModelAndView();
+			
+			try {
+				
+				HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+				Member member =(Member) request.getSession().getAttribute("member");
+				if(member!=null){
+					List list =(List) this.cartserviceimpl.getCartGoods(member.getId());
+					mv.addObject("list",list);
+				}
+				mv.setViewName("../../shop/checkout");
+				return mv;
+			} catch (Exception e) {
+				// TODO: handle exception
+				mv.setViewName("../../shop/checkout");
+				return mv;
 			}
 		}
 }

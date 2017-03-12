@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<script type="text/javascript">
+function goCart(){
+	var member_id = $("#memberid").attr("value")?$("#memberid")[0].value:"";
+	if(!member_id){
+		alert("请先登陆")
+		return;
+	}
+	location.href="getCartGoods";
+}
 
+</script>
 <div class="header">
 	<div class="header-top">
 		<div class="container">
@@ -13,7 +23,8 @@
 					</c:if>
 					<c:if test="${sessionScope.member!=null}">
 						<p class="log">用户:
-						<span>${sessionScope.member.memberName}</span></p>
+						<span>${sessionScope.member.memberName}</span>
+						<input type="hidden" value="${sessionScope.member.id}" id="memberid"/></p>
 					</c:if>
 				</div>
 				<div class="col-sm-4 logo">
@@ -23,10 +34,9 @@
 			<div class="col-sm-4 header-left">		
 					
 					<div class="cart box_1">
-						<a href="shop/checkout.jsp">
 						<h3> <div class="total">
 							</div>
-							<img src="images/cart.png" alt=""/></h3>
+							<img src="images/cart.png" alt="" onClick="goCart()"/></h3>
 						</a>
 
 					</div>

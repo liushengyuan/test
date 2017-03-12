@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +22,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
 <!-- slide -->
+<script type="text/javascript">
+function changImg(e){
+	var url =e.name;
+	var url2 =url.split("springmvc");
+	e.src = "/springmvc"+url2[1];
+}
+</script>
 </head>
 <body>
 <!--header-->
@@ -32,50 +41,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     	    <table >
 		  <tr>
 			<th>Item</th>
-			<th>Qty</th>		
+			<th>num</th>		
 			<th>Prices</th>
-			<th>Delery Detials</th>
-			<th>Subtotal</th>
 		  </tr>
+		  <c:forEach items="${list}" var="item">
 		  <tr>
-			<td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce.jpg" class="img-responsive" alt=""></a>
+			<td class="ring-in"><a href="getGoodsInfo?goods_id=${item.goods_id}" class="at-in"><img src="images/ce.jpg" class="img-responsive" alt="" name="${item.goods_image1}" onload='changImg(this)'></a>
 			<div class="sed">
-				<h5>Sed ut perspiciatis unde</h5>
-				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
+				<h5>${item.goods_name}</h5>
 			
 			</div>
 			<div class="clearfix"> </div></td>
-			<td class="check"><input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"></td>		
-			<td>$100.00</td>
-			<td>FREE SHIPPING</td>
-			<td>$100.00</td>
+			<td class="check">1</td>		
+			<td>$${item.goods_price}</td>
 		  </tr>
-		  <tr>
-		  <td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce1.jpg" class="img-responsive" alt=""></a>
-			<div class="sed">
-				<h5>Sed ut perspiciatis unde</h5>
-				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium ) </p>
-			</div>
-			<div class="clearfix"> </div></td>
-			<td class="check"><input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"></td>		
-			<td>$200.00</td>
-			<td>FREE SHIPPING</td>
-			<td>$200.00</td>
-		  </tr>
-		  <tr>
-		  <td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce2.jpg" class="img-responsive" alt=""></a>
-			<div class="sed">
-				<h5>Sed ut perspiciatis unde</h5>
-				<p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
-			</div>
-			<div class="clearfix"> </div></td>
-			<td class="check"><input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"></td>		
-			<td>$150.00</td>
-			<td>FREE SHIPPING</td>
-			<td>$150.00</td>
-		  </tr>
+		 </c:forEach>
 	</table>
-	<a href="#" class=" to-buy">PROCEED TO BUY</a>
+	<a href="#" class=" to-buy">立即购买</a>
 	<div class="clearfix"> </div>
     </div>
 </div>

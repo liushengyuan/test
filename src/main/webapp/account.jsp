@@ -41,7 +41,6 @@ function send(){
 		async: false,
 		error: function(rs) {
 			alert(rs.responseText);
-			alert("111");
 			//location.href="index.jsp";
 			location.href="account.jsp";
 		},

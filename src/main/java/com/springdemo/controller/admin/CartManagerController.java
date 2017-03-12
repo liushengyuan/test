@@ -1,11 +1,19 @@
 package com.springdemo.controller.admin;
 
+import java.awt.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.springdemo.po.Cart;
+import com.springdemo.po.Member;
 import com.springdemo.service.CartService;
 
 @Controller
@@ -70,24 +78,29 @@ public class CartManagerController {
 		}
 	}
 	
-	//查看购物车商品
-	@RequestMapping(value="/getCartGoods",produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public String getCartGoods(){
-		try {
-			this.cartserviceimpl.getCartGoods(member_id);
-			return "";
-		} catch (Exception e) {
-			// TODO: handle exception
-			return "网络错误！";
-		}
-	}
+	
 	//加入购物车
 	@RequestMapping(value="/addCart",produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String addCart(){
 		try {
 			Cart cart = new Cart();
+			HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+			String id =request.getParameter("id");
+			String price =request.getParameter("price");
+			String goods_name =request.getParameter("goods_name");
+			String goods_image1 =request.getParameter("goods_image1");
+			cart.setGoods_id(Integer.parseInt(id));
+			cart.setGoods_image1(goods_image1);
+			cart.setGoods_name(goods_name);
+			cart.setGoods_price(Integer.parseInt(price));
+			Member member =(Member) request.getSession().getAttribute("member");
+			cart.setIs_select(1);
+			cart.setNum(1);
+			if(member!=null){
+				cart.setMember_id(member.getId());
+			}
+			
 			this.cartserviceimpl.addCart(cart);
 			return "加入成功！";
 		} catch (Exception e) {

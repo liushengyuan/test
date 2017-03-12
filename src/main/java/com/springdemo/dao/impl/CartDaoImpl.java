@@ -57,8 +57,8 @@ public class CartDaoImpl implements CartDao{
 	@Override
 	public void addCart(Cart cart) {
 		// TODO Auto-generated method stub
-		String sql ="insert into cart(goods_id,goods_name,goods_image1,goods_price,is_select) values(?,?,?,?,?)";
-		this.simpleJdbcTemplate.update(sql, cart.getGoods_id(),cart.getGoods_name(),cart.getGoods_image1(),1);
+		String sql ="insert into cart(goods_id,goods_name,goods_image1,goods_price,is_select,num,member_id) values(?,?,?,?,?,?,?)";
+		this.simpleJdbcTemplate.update(sql, cart.getGoods_id(),cart.getGoods_name(),cart.getGoods_image1(),cart.getGoods_price(),cart.getIs_select(),cart.getNum(),cart.getMember_id());
 	}
 
 }

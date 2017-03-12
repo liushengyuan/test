@@ -7,6 +7,8 @@ public class Cart {
 	private String goods_image1;
 	private double goods_price;
 	private int is_select;
+	private int num;
+	private int member_id;
 	public int getId() {
 		return id;
 	}
@@ -42,6 +44,18 @@ public class Cart {
 	}
 	public void setIs_select(int is_select) {
 		this.is_select = is_select;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public int getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(int member_id) {
+		this.member_id = member_id;
 	}
 	
 }
