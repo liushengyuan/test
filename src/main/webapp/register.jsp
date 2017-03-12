@@ -21,6 +21,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
+<script type="text/javascript">
+function send(){
+	var name =$("#memberName")[0].value;
+	var address =$("#address")[0].value;
+	var password =$("#password")[0].value;
+	var conpassword =$("#conpassword")[0].value;
+	
+	if(!name||!address||!password||!conpassword){
+		alert("请检查数据！");
+		return;
+	}
+	if(password!=conpassword){
+		alert("两次输入的密码不一致！")
+		return;
+	}
+	$.ajax({
+		cache: true,
+		type: "POST",
+		url:'addMember',
+		data:$('#regist').serialize(),// 你的formid
+		async: false,
+		error: function(rs) {
+			alert(rs.responseText);
+			alert("111");
+			//location.href="index.jsp";
+			location.href="register.jsp";
+		},
+		success: function(responseJSON) {
+			alert(responseJSON);
+			location.href="account.jsp";
+		}
+	});
+}
+</script>
 <!-- slide -->
 </head>
 <body>
@@ -30,36 +64,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 	<div class="register">
 		<h1>Register</h1>
-		  	  <form> 
+		  	  <form method="post" enctype="multipart/form-data" onsubmit="return false;" id="regist"> 
 				 <div class="col-md-6  register-top-grid">
 					
 					<div class="mation">
 						<span>你的用户名</span>
-						<input type="text"> 
+						<input type="text" name="memberName" id="memberName"> 
 						
 						 <span>你的地址</span>
-						 <input type="text"> 
+						 <input type="text"  name="address" id="address"> 
 					</div>
 					 <div class="clearfix"> </div>
-					   <a class="news-letter" href="#">
-						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up</label>
-					   </a>
+					  
 					 </div>
 				     <div class=" col-md-6 register-bottom-grid">
 						   
 							<div class="mation">
 								<span>密码</span>
-								<input type="text">
+								<input type="text" name="password" id="password">
 								<span>确认密码</span>
-								<input type="text">
+								<input type="text"  id="conpassword">
 							</div>
 					 </div>
 					 <div class="clearfix"> </div>
 				</form>
 				
 				<div class="register-but">
-				   <form>
-					   <input type="submit" value="submit">
+				   <form onsubmit="return false;">
+					   <input type="submit" value="submit" onClick="send()">
 					   <div class="clearfix"> </div>
 				   </form>
 				</div>

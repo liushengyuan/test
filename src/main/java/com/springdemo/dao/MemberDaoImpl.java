@@ -62,9 +62,9 @@ public class MemberDaoImpl implements MemberDao{
 		// TODO Auto-generated method stub
 		String sql = "insert into zd_member(memberName,password,address,mobile,ifFrozenAccount,createDate) values(?,?,?,?,?,?)";  
         //Object[] params = new Object[]{user.getUsername(),user.getPassword()};  
-		int count = this.simpleJdbcTemplate.update(sql,member.getMemberName(),
+		this.simpleJdbcTemplate.update(sql,member.getMemberName(),
 				member.getPassword(),member.getAddress(),member.getMobile(),member.getIfFrozenAccount(),member.getCreateDate());
-		return count;
+		return 1;
 	}
 
 	@Override

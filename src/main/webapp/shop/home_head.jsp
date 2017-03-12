@@ -5,10 +5,16 @@
 	<div class="header-top">
 		<div class="container">
 		<div class="col-sm-4 world">
+					<c:if test="${sessionScope.member==null}">
 					<ul >
 						<p class="log"><a href="account.jsp"  >Login</a>
 						<span>or</span><a  href="account.jsp"  >Signup</a></p>
 					</ul>
+					</c:if>
+					<c:if test="${sessionScope.member!=null}">
+						<p class="log">用户:
+						<span>${sessionScope.member.memberName}</span></p>
+					</c:if>
 				</div>
 				<div class="col-sm-4 logo">
 					<a href="index.jsp"><img src="images/logo.png" alt=""></a>	

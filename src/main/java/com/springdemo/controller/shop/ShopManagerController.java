@@ -1,5 +1,7 @@
 package com.springdemo.controller.shop;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.springdemo.po.Goods;
+import com.springdemo.po.Member;
 import com.springdemo.po.MemberMessage;
 import com.springdemo.po.Order;
 import com.springdemo.service.ActService;
 import com.springdemo.service.GoodsService;
+import com.springdemo.service.MemberService;
 import com.springdemo.service.MessageService;
 import com.springdemo.service.OrderService;
 import com.springdemo.service.SeachService;
@@ -35,6 +39,8 @@ public class ShopManagerController {
 	private SeachService seachserviceimpl;
 	@Autowired
 	private MessageService messageserviceimpl;
+	@Autowired
+	private MemberService memberserviceimpl;
 		//获得活动列表
 		@RequestMapping(value="/getActList",produces = "application/json; charset=utf-8")
 		public ModelAndView getActList(){
@@ -115,5 +121,55 @@ public class ShopManagerController {
 				return "网络错误";
 			}
 		}
-		
+		//注册用户
+		@RequestMapping(value="/addMember",produces = "application/json; charset=utf-8")
+		@ResponseBody
+		public String addMember(){
+			try {
+				HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+				String name =request.getParameter("memberName");
+				String password =request.getParameter("password");
+				String adddress =request.getParameter("adddress");
+				Member member = new Member();
+				long tiem= System.currentTimeMillis();
+				String creattime =transferLongToDate("yyyy/dd/MM",tiem);
+				member.setCreateDate(creattime);
+				member.setAddress(adddress);
+				member.setIfFrozenAccount(1);
+				member.setMemberName(name);
+				member.setMobile("");
+				member.setPassword(password);
+				this.memberserviceimpl.addMembers(member);
+				Gson gson = new Gson();
+				String json = gson.toJson("用户注册成功");
+				return json;
+			} catch (Exception e) {
+				// TODO: handle exception
+				return "网络错误";
+			}
+		}
+		//时间转化
+		 private String transferLongToDate(String dateFormat,Long millSec){
+		     SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+		     Date date= new Date(millSec);
+		            return sdf.format(date);
+		}
+		//用户登陆
+		 @RequestMapping(value="/login",produces = "application/json; charset=utf-8")
+		 @ResponseBody
+		 public String login(){
+			try {
+				HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+				String name =request.getParameter("memberName");
+				String password =request.getParameter("password");
+				List<Member> list =this.memberserviceimpl.memberLogin(name, password);
+				request.getSession().setAttribute("member", list.get(0));
+				Gson gson = new Gson();
+				String json = gson.toJson("用户登陆成功");
+				return json;
+			} catch (Exception e) {
+				// TODO: handle exception
+				return "网络错误";
+			}
+		}
 }

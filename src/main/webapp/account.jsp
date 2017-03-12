@@ -23,6 +23,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/simpleCart.min.js"> </script>
 <!-- slide -->
 </head>
+<script type="text/javascript">
+function send(){
+	var name =$("#memberName")[0].value;
+	var password =$("#password")[0].value;
+	alert("111");
+	if(!name||!password){
+		alert("请检查数据！");
+		return;
+	}
+	
+	$.ajax({
+		cache: true,
+		type: "POST",
+		url:'login',
+		data:$('#login').serialize(),// 你的formid
+		async: false,
+		error: function(rs) {
+			alert(rs.responseText);
+			alert("111");
+			//location.href="index.jsp";
+			location.href="account.jsp";
+		},
+		success: function(responseJSON) {
+			alert(responseJSON);
+			location.href="index.jsp";
+		}
+	});
+}
+</script>
 <body>
 <!--header-->
 <%@ include  file="/shop/home_head.jsp"%>
@@ -32,16 +61,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1>Account</h1>
 		<div class="account_grid">
 			   <div class="col-md-6 login-right">
-				<form>
+				<form method="post" enctype="multipart/form-data" onsubmit="return false;" id="login">
 
 					<span>用户名</span>
-					<input type="text"> 
+					<input type="text" id="memberName" name="memberName"> 
 				
 					<span>密码</span>
-					<input type="text"> 
+					<input type="text" id="password" name="password"> 
 					<div class="word-in">
 				  		
-				 		 <input type="submit" value="Login">
+				 		 <input type="submit" value="Login" onClick="send()">
 				  	</div>
 			    </form>
 			   </div>	
