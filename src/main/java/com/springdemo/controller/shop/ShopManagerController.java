@@ -114,8 +114,7 @@ public class ShopManagerController {
 				message.setMember_email(email);
 				message.setMember_id(0);
 				message.setMember_name(name);
-				int phonenum=Integer.valueOf(myphone.trim());
-				message.setMember_phone(phonenum);
+				message.setMember_phone(myphone);
 				message.setMessage(messageInfo);
 				this.messageserviceimpl.addMessage(message);
 				return "发送留言成功";

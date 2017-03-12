@@ -70,3 +70,5 @@ INSERT INTO `zd_member` VALUES ('2', 'jun', 'jun','天津市南开区','13852070
 INSERT INTO `zd_member` VALUES ('3', 'hai', 'hai', '天津市和平区','15552070613','0', '2017-01-14');
 INSERT INTO `zd_member` VALUES ('4', 'xu', '123456','天津市河东区','18752070614', '0', '2017-03-08 08:42:22');
 INSERT INTO `zd_member` VALUES ('5', 'zhang', '123456', '天津市红桥区','13752070615','0', '2017-03-08 08:45:50');
+--message
+--将手机号修改为String类型
