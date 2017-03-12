@@ -35,16 +35,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         pager: true,
       });
     });
-    function addCart(e){
+    function addCart(id,goodsname,price,e){
     	var member_id = $("#memberid").attr("value")?$("#memberid")[0].value:"";
     	if(!member_id){
     		alert("请先登陆")
     		return;
     	}
-    	var price =$("#price").attr("value");
-    	var goodsname =$("#goodsname").attr("value");
-    	var image =$("#image").attr("name");
-    	var date=jQuery.param({ "price": price, "id": e.name,"goods_name": goodsname,"goods_image1": image });
+    	var image=$("#image"+e).attr("name");
+    	var date=jQuery.param({ "price": price, "id": id,"goods_name": goodsname,"goods_image1": image });
     	$.ajax({
     		cache: true,
     		type: "POST",
@@ -145,16 +143,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h1>Recent Products</h1>
 			
 			<div class="content-top1">
-			<c:forEach items="${actGoodsList}" var="item">
+			<c:forEach items="${actGoodsList}" var="item" varStatus="status">
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="getGoodsInfo?goods_id=${item.id}">
-							<img class="img-responsive" src="images/pi3.png" alt="" name="${item.image1}" onload='changImg(this)'id="image" />
+							<img class="img-responsive" src="images/pi3.png" alt="" name="${item.image1}" onload='changImg(this)' id="image${status.index}"/>
 						</a>
-						<h3 id="goodsname" value="${item.goods_name}"><a href="getGoodsInfo?goods_id=${item.id}">${item.goods_name}</a></h3>
+						<h3><a href="getGoodsInfo?goods_id=${item.id}">${item.goods_name}</a></h3>
 						<div class="price">
-								<h5 class="item_price" id="price" value="${item.price}">$${item.price}</h5>
-								<a href="#" class="item_add" name="${item.id}" onClick="addCart(this)">Add To Cart</a>
+								<h5 class="item_price" >$${item.price}</h5>
+								<a href="#" class="item_add"><span onClick="addCart(${item.id},'${item.goods_name}',${item.price},${status.index})">Add To Cart</span></a>
 								<div class="clearfix"> </div>
 						</div>
 					</div>

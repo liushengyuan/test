@@ -27,7 +27,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 function send(){
 	var name =$("#memberName")[0].value;
 	var password =$("#password")[0].value;
-	alert("111");
 	if(!name||!password){
 		alert("请检查数据！");
 		return;
