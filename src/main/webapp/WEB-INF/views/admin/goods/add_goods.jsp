@@ -72,14 +72,15 @@ function selectOnchang(obj){
 }
 //form 表单提交
 function submit(){
-	var name =$("#name").value;
-	var price =$("#is_check").value;
-	var info =$("#info").value;
+	var name =$("#name")[0].value;
+	var price =$("#price")[0].value;
+	var info =$("#info")[0].value;
 	var class2 =$("#class2").find("option:checked").attr("value");
 	var childClass =$("#childClass").find("option:checked").attr("value");
 	var threeClass =$("#threeClass").find("option:checked").attr("value");
+	
 	test();
-	if(!name||!price||!info||!is_check||!image1||!image2||!image3||!class2||!childClass||!threeClass){
+	if(name==""||price==""||info==""||is_check==""||image1==""||image2==""||image3==""||class2==""||childClass==""||threeClass==""){
 		alert("请检查数据！");
 		return;
 	}

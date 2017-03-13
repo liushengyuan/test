@@ -94,8 +94,8 @@ public class ShopManagerController {
 					String url2 ="/springmvc"+list.get(0).getImage3().split("springmvc")[1];
 					list.get(0).setImage2(url2);
 				}
-				if(list.get(0).getImage3()!=""){
-					String url2 ="/springmvc"+list.get(0).getImage3().split("springmvc")[1];
+				if(list.get(0).getImage2()!=""){
+					String url2 ="/springmvc"+list.get(0).getImage2().split("springmvc")[1];
 					list.get(0).setImage3(url2);
 				}
 				mv.addObject("goodsinfo",list.get(0));

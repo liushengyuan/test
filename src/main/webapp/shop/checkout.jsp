@@ -28,6 +28,9 @@ function changImg(e){
 	var url2 =url.split("springmvc");
 	e.src = "/springmvc"+url2[1];
 }
+function goCart(){
+	alert("此功能尚未开发！")
+}
 </script>
 </head>
 <body>
@@ -57,7 +60,7 @@ function changImg(e){
 		  </tr>
 		 </c:forEach>
 	</table>
-	<a href="#" class=" to-buy">立即购买</a>
+	<a href="javaScript:void(0)" class=" to-buy" onClick="goCart()">立即购买</a>
 	<div class="clearfix"> </div>
     </div>
 </div>

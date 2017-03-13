@@ -58,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<label  class="add-to item_price">$${goodsinfo.price}</label>
 							
 						
-								<a href="#" class="cart item_add">Add Cart</a>
+								<!-- <a href="#" class="cart item_add">Add Cart</a> -->
 						</div>
 					</div>
 			<div class="clearfix"> </div>

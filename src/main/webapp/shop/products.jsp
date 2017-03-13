@@ -38,6 +38,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		var url2 =url.split("springmvc");
 		e.src = "/springmvc"+url2[1];
 	}
+    function addCart(id,goodsname,price,e){
+    	var member_id = $("#memberid").attr("value")?$("#memberid")[0].value:"";
+    	if(!member_id){
+    		alert("请先登陆")
+    		return;
+    	}
+    	var image=$("#image"+e).attr("name");
+    	var date=jQuery.param({ "price": price, "id": id,"goods_name": goodsname,"goods_image1": image });
+    	$.ajax({
+    		cache: true,
+    		type: "POST",
+    		url:'cart/addCart',
+    		data:date,// 你的formid
+    		async: false,
+    		error: function(rs) {
+    			alert(rs.responseText);
+    			//location.href="index.jsp";
+    			//location.href="account.jsp";
+    		},
+    		success: function(responseJSON) {
+    			alert(responseJSON);
+    			//location.href="index.jsp";
+    		}
+    	});
+    }
   </script>
 </head>
 <body>
@@ -49,16 +74,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1>Products</h1>
 		<div class="col-md-9">
 			<div class="content-top1">
-				<c:forEach items="${goodsList}" var="item">
+				<c:forEach items="${goodsList}" var="item" varStatus="status">
 				<div class="col-md-3 col-md2">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="getGoodsInfo?goods_id=${item.id}">
-							<img class="img-responsive" src="images/pi3.png" alt="" name="${item.image1}" onload='changImg(this)' />
+							<img class="img-responsive" src="images/pi3.png" alt="" name="${item.image1}" onload='changImg(this)'id="image${status.index}" />
 						</a>
 						<h3><a href="getGoodsInfo?goods_id=${item.id}">${item.name}</a></h3>
 						<div class="price">
 								<h5 class="item_price">$${item.price}</h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<a href="javaScritp:void(0)" class="item_add" onClick="addCart(${item.id},'${item.goods_name}',${item.price},${status.index})">Add To Cart</a>
 								<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -114,7 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							        }
 							    });
 							
-							});
+							})
 						</script>
 <!--//menu-->
 <!--seller-->
