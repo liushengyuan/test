@@ -35,16 +35,12 @@ public class memberManagerController {
 	private MemberService memberService;
 	
 	private static final int PAGE_LIMIT=3;
-	
-//	@RequestMapping("addMembers")
-//	public String addMembers(Model model){
-//		return "admin/member/add_members";
-//	}
-//	
-//	@RequestMapping("/memberList")
-//	public String memberList(Model model){
-//		return "admin/member/member_list";
-//	}
+	/**
+	 * @跳转MemberList
+	 * @param page
+	 * @param numPerPage
+	 * @return
+	 */
 	@RequestMapping(value = "/getMemberList",produces = "application/json; charset=utf-8")
     public ModelAndView teacherFind(String page,String numPerPage){
 		
@@ -82,30 +78,24 @@ public class memberManagerController {
     	     
     	return mv;
     }
-	
 	/**
-	 * @后台会员列表
+	 * @冻结与解冻账号
+	 * @param id
+	 * @param ifFrozenAccount
+	 * @return
 	 */
-//	@RequestMapping("/getMemberList")
-//	public ModelAndView handleRequest(javax.servlet.http.HttpServletRequest httpServletRequest,
-//            javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		try {
-//			List<Member> list = memberService.getMemberList();
-//			//Collections.reverse(list);
-//			//Collections.sort(list, Collections.reverseOrder());
-//			//list.
-//			//封装要显示到视图的数据6
-//	    	mv.addObject("memberInfos",list);
-//	    	//视图名
-//	    	mv.setViewName("admin/member/member_list");
-//	    	System.out.println("currentTimeMillis: "+System.currentTimeMillis());
-//	    	return mv;
-//		} catch (Exception e) {
-//			// TODO: handle exce6ption6
-//		}
-//		
-//		return null;
-//    	
-//	}
+	@RequestMapping(value="/updateMemberAccountStatus",produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public boolean updateMemberAccountStatus(int id,int ifFrozenAccount){
+		ModelAndView mv = new ModelAndView();
+		
+		Member member = new Member();
+		
+		boolean status = this.memberService.updateAccountStatus(id, ifFrozenAccount);
+		if(status){
+			
+			return true;
+		}
+		return false;
+	}
 }

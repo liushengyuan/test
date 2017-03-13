@@ -81,6 +81,16 @@ public class MemberServiceImpl implements MemberService{
 		return null;
 	}
 
+	@Override
+	public boolean updateAccountStatus(int id, int ifFrozenAccount) {
+		// TODO Auto-generated method stub
+		int count = this.memberDao.updateAccountStatus(id, ifFrozenAccount);
+		if(count > 0){
+			return true;
+		}
+		return false;
+	}
+
 	
 	
 }

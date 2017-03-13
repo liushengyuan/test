@@ -62,9 +62,9 @@ public class MemberDaoImpl implements MemberDao{
 		// TODO Auto-generated method stub
 		String sql = "insert into zd_member(memberName,password,address,mobile,ifFrozenAccount,createDate) values(?,?,?,?,?,?)";  
         //Object[] params = new Object[]{user.getUsername(),user.getPassword()};  
-		this.simpleJdbcTemplate.update(sql,member.getMemberName(),
+		int count = this.simpleJdbcTemplate.update(sql,member.getMemberName(),
 				member.getPassword(),member.getAddress(),member.getMobile(),member.getIfFrozenAccount(),member.getCreateDate());
-		return 1;
+		return count;
 	}
 
 	@Override
@@ -90,6 +90,19 @@ public class MemberDaoImpl implements MemberDao{
 		List<Member> list = this.simpleJdbcTemplate.query(sql,
 				ParameterizedBeanPropertyRowMapper.newInstance(Member.class),memberName,password);
 		return list;
+	}
+	/**
+	 * 修改账号状态
+	 */
+	@Override
+	public int updateAccountStatus(int id, int ifFrozenAccount) {
+//		String sql = "insert into zd_member(memberName,password,address,mobile,ifFrozenAccount,createDate) values(?,?,?,?,?,?)";  
+        //Object[] params = new Object[]{user.getUsername(),user.getPassword()};  
+//		int count = this.simpleJdbcTemplate.update(sql,member.getMemberName(),
+//				member.getPassword(),member.getAddress(),member.getMobile(),member.getIfFrozenAccount(),member.getCreateDate());
+		String sql = "update zd_member set ifFrozenAccount = ? where id = ?";
+		int count = this.simpleJdbcTemplate.update(sql, ifFrozenAccount , id);
+		return count;
 	}
     
     

@@ -43,10 +43,17 @@
 		       <td><c:out value="${memberInfo.address}" /></td>
 		       <td><c:out value="${memberInfo.mobile}" /></td>
 		       <td><c:out value="${memberInfo.createDate}" /></td>
-		       <td><c:out value="${memberInfo.ifFrozenAccount}" /></td>
+		       <td class="accountStatus"><c:if test="${memberInfo.ifFrozenAccount==0}">
+   					    正常
+				   </c:if>
+				   <c:if test="${memberInfo.ifFrozenAccount==1}">
+   					    被冻结
+				   </c:if>
+			   </td>
+			   <!--<c:out value="${memberInfo.ifFrozenAccount}" />  -->
 		       <td>
-		        <a href="#">冻结</a>
-		        <a href="#" class="inner_btn">解冻</a>
+		        <a href="#" onClick="ifFrozenAccount(${memberInfo.id},1,${status.index})">冻结</a>
+		        <a href="#" class="inner_btn" onClick="ifFrozenAccount(${memberInfo.id},0,${status.index})">解冻</a>
 		       </td>
 		      </tr>
 		      </c:forEach>
@@ -83,7 +90,51 @@
 			}
 			window.location.href = "../admin/getMemberList?page="+(${memberInfoPage.getCurrentPage()}+1)+"&numPerPage=10";
 		});
-		//href=
+		function ifFrozenAccount(id,status,index){
+			console.log(id+"---"+status);
+			
+			console.log(index);
+			$.ajax({  
+	              type:"POST",  
+	              url:"updateMemberAccountStatus",  
+	              data:{id:id,ifFrozenAccount:status},  
+	              dataType: "json",   //返回值类型       使用json的话也可以，但是需要在JS中编写迭代的html代码，如果格式样式  
+	              cache:false,  
+	              success:function(data){  
+	                  //var json = eval('('+msg+')');//拼接的json串  
+	                  //$('#flushDIV').html(data);
+	                    
+	                  console.log(data);
+	                  
+	                  if(data){
+	                	  var changeValue = $(".accountStatus")[index];
+		                  if(status == 1){
+		                	 
+		                	 $(changeValue).html("被冻结");
+				          }else{
+				        	 $(changeValue).html("正常");
+						  } 
+		              }else{
+		            	  if(status == 1){
+		                	  alert("该账号已经是冻结状态,无需进行此操作");
+				          }else{
+				        	  alert("该账号已经是正常状态,无需进行此操作");
+						  }
+				      }
+	                  
+		              
+	              },  
+	              error:function(error){console.log(data);}  
+	          });
+		}
+		    
+		function ajax(type,url,data){
+			$.ajax({
+			    type:"POST",
+			    url:"",
+			})
+		}
+		
 	</script>
 </body>
 </html>

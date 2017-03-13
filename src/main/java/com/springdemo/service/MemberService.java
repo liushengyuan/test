@@ -26,4 +26,8 @@ public interface MemberService{
 	* @会员注册
 	*/
 	public boolean addMembers(Member member);
+	/*
+	* @修改会员账号状态
+	*/
+	public boolean updateAccountStatus(int id , int ifFrozenAccount);
 }

@@ -12,4 +12,5 @@ public interface MemberDao {
 	public List<Member> getMemberByName(String memberName);
 	public List<Member> memberLogin(String memberName, String password);
 	public int addMembers(Member member);
+	public int updateAccountStatus(int id, int ifFrozenAccount);
 }
