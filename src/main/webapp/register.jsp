@@ -39,18 +39,21 @@ function send(){
 	$.ajax({
 		cache: true,
 		type: "POST",
-		url:'addMember',
-		data:$('#regist').serialize(),// 你的formid
+		url:'addMembers',
+		data:{memberName:name,password:password},// 你的formid
 		async: false,
 		error: function(rs) {
-			alert(rs.responseText);
-			alert("111");
+			alert(rs.message);
 			//location.href="index.jsp";
 			location.href="register.jsp";
 		},
 		success: function(responseJSON) {
-			alert(responseJSON);
-			location.href="account.jsp";
+			if(responseJSON.result == 1){
+				location.href="account.jsp";
+			}else{
+				alert(responseJSON.message);
+			}
+			
 		}
 	});
 }
@@ -65,7 +68,7 @@ function send(){
 	<div class="register">
 		<h1>Register</h1>
 		  	  <form method="post" enctype="multipart/form-data" onsubmit="return false;" id="regist"> 
-				 <div class="col-md-6  register-top-grid">
+				 <div class="col-md-6  register-top-grid register-input">
 					
 					<div class="mation">
 						<span>你的用户名</span>
@@ -74,10 +77,10 @@ function send(){
 						 <span>你的地址</span>
 						 <input type="text"  name="address" id="address"> 
 					</div>
-					 <div class="clearfix"> </div>
+					 <div class="clearfix "> </div>
 					  
 					 </div>
-				     <div class=" col-md-6 register-bottom-grid">
+				     <div class=" col-md-6 register-bottom-grid ">
 						   
 							<div class="mation">
 								<span>密码</span>
@@ -86,7 +89,7 @@ function send(){
 								<input type="text"  id="conpassword">
 							</div>
 					 </div>
-					 <div class="clearfix"> </div>
+					 <div class="clearfix "> </div>
 				</form>
 				
 				<div class="register-but">

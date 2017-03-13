@@ -33,19 +33,24 @@ function send(){
 	}
 	
 	$.ajax({
-		cache: true,
-		type: "POST",
-		url:'login',
-		data:$('#login').serialize(),// 你的formid
-		async: false,
+		type:"POST",  
+        url:"memberLogin",  
+        data:{memberName:name,password:password},  
+        dataType: "json",   //返回值类型       使用json的话也可以，但是需要在JS中编写迭代的html代码，如果格式样式  
+        cache:false,  
 		error: function(rs) {
-			alert(rs.responseText);
+			alert(rs.message);
 			//location.href="index.jsp";
 			location.href="account.jsp";
 		},
 		success: function(responseJSON) {
-			alert(responseJSON);
-			location.href="index.jsp";
+			if(responseJSON.result == 1){
+				location.href="index.jsp";
+			}else{
+				alert(responseJSON.message);
+			}
+			
+			
 		}
 	});
 }

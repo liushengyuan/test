@@ -37,7 +37,6 @@ public class MemberController {
 	@ResponseBody
 	public String memberLogin(@RequestParam("memberName") String memberName,
 			@RequestParam("password") String password){
-		Member member = new Member();
 		Gson gson = new Gson();
 		Map<String,Object> map = new HashMap<String,Object>();
 		//检查用户名是否已经被注册
